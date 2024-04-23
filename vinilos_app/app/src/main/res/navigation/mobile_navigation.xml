@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/detalleAlbum">
+
+    <fragment
+        android:id="@+id/detalleAlbum"
+        android:name="com.example.vinilos.ui.DetalleAlbum.DetalleAlbum"
+        android:label="fragment_detalle_album"
+        tools:layout="@layout/fragment_detalle_album" />
+    <fragment
+        android:id="@+id/listaAlbum"
+        android:name="com.example.vinilos.ui.ListaAlbum.ListaAlbum"
+        android:label="fragment_lista_album"
+        tools:layout="@layout/fragment_lista_album" />
+</navigation>

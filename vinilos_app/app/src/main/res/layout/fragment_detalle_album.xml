@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2A2A2A"
-    tools:context=".DetalleAlbumActivity">
+    android:theme="@style/Theme.Vinilos"
+    tools:context=".ui.DetalleAlbum.DetalleAlbum">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/BottomNavbar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +19,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.7">
+            android:layout_marginVertical="5dp"
+            android:layout_weight="0.8">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/AlbumFoto"
@@ -38,7 +38,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/DetalleAlbumFoto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:srcCompat="@tools:sample/avatars" />
@@ -49,10 +49,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.9">
+            android:layout_weight="1">
 
             <TextView
-                android:id="@+id/AlbumTitulo"
+                android:id="@+id/DetalleAlbumTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -73,7 +73,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/AlbumDisquera"
+                android:id="@+id/DetalleAlbumDisquera"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="10dp"
@@ -93,7 +93,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/AlbumGenero"
+                android:id="@+id/DetalleAlbumGenero"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="10dp"
@@ -114,7 +114,7 @@
             android:visibility="visible">
 
             <TextView
-                android:id="@+id/AlbumLanzamiento"
+                android:id="@+id/DetalleAlbumLanzamiento"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="10dp"
@@ -131,11 +131,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
             android:visibility="visible">
 
             <TextView
-                android:id="@+id/AlbumDescripcion"
+                android:id="@+id/DetalleAlbumDescripcion"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="10dp"
@@ -150,16 +150,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/BottomNavbar"
-        android:name="com.example.vinilos.BottomMenu"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:backgroundTintMode="add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout="@layout/fragment_bottom_menu" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

@@ -22,13 +22,7 @@
             android:name=".OpcionesActivity"
             android:exported="false" />
         <activity
-            android:name=".DetalleColeccionistaActivity"
-            android:exported="false" />
-        <activity
             android:name=".DetalleArtistaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DetalleAlbumActivity"
             android:exported="false" />
         <activity
             android:name=".CatalogoColeccionistasActivity"
