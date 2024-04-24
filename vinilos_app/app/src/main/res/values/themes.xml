@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.Vinilos" parent="android:ThemeOverlay.Material.Dark.ActionBar">
-        <!-- Primary brand color. -->
+    <style name="Vinilos" parent="Theme.AppCompat.NoActionBar">
+        <!-- General Styling. -->
         <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>
@@ -11,6 +13,5 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Customize your theme here. -->
     </style>
 </resources>

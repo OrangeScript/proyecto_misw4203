@@ -3,16 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/detalleAlbum">
+    app:startDestination="@id/listaAlbum">
 
-    <fragment
-        android:id="@+id/detalleAlbum"
-        android:name="com.example.vinilos.ui.DetalleAlbum.DetalleAlbum"
-        android:label="fragment_detalle_album"
-        tools:layout="@layout/fragment_detalle_album" />
     <fragment
         android:id="@+id/listaAlbum"
         android:name="com.example.vinilos.ui.ListaAlbum.ListaAlbum"
         android:label="fragment_lista_album"
         tools:layout="@layout/fragment_lista_album" />
+
+    <fragment
+        android:id="@+id/listaArtista"
+        android:name="com.example.vinilos.ui.ListaArtista.ListaArtista"
+        android:label="fragment_lista_artista"
+        tools:layout="@layout/fragment_lista_artista" />
+
+    <fragment
+        android:id="@+id/listaColeccionista"
+        android:name="com.example.vinilos.ui.ListaColeccionista.ListaColeccionista"
+        android:label="fragment_lista_coleccionista"
+        tools:layout="@layout/fragment_lista_coleccionista" />
+
+    <fragment
+        android:id="@+id/opciones"
+        android:name="com.example.vinilos.ui.Opciones.Opciones"
+        android:label="fragment_opciones"
+        tools:layout="@layout/fragment_opciones" />
+
 </navigation>

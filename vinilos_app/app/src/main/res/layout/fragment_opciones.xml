@@ -3,14 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible"
-    tools:context=".ui.ListaAlbum.ListaAlbum">
+    tools:context=".ui.Opciones.Opciones">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello"
-        android:textColor="#FFFFFF"
-        android:textSize="96sp" />
+        android:text="Hello" />
 
 </FrameLayout>
