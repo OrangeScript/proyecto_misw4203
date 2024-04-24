@@ -10,40 +10,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Vinilos"
+        android:theme="@style/Vinilos"
         tools:targetApi="31">
-        <activity
-            android:name=".AsociarTrackActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CrearAlbumActivity"
-            android:exported="false" />
-        <activity
-            android:name=".OpcionesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DetalleColeccionistaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DetalleArtistaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DetalleAlbumActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CatalogoColeccionistasActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CatalogoArtistaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CatalogoAlbumActivity"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Vinilos">
+            android:theme="@style/Vinilos">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
