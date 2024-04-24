@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
 
 class ListaAlbum : Fragment() {
@@ -15,6 +17,8 @@ class ListaAlbum : Fragment() {
     }
 
     private val viewModel: ListaAlbumViewModel by viewModels()
+
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +30,14 @@ class ListaAlbum : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_lista_album, container, false)
+        val view = inflater.inflate(R.layout.fragment_lista_album, container, false)
+        recyclerView = view.findViewById(R.id.rv_albums)
+        setupRecyclerView()
+        return view
+    }
+
+    private fun setupRecyclerView() {
+        recyclerView.layoutManager = LinearLayoutManager(context)
+//        recyclerView.adapter = AlbumAdapter(viewModel)
     }
 }
