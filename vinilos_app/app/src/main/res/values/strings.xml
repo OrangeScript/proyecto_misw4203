@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">vinilos</string>
-    <string name="menu_home">Home</string>
-    <string name="menu_add">Agregar</string>
+    <string name="menu_albums">Álbumes</string>
+    <string name="menu_artists">Artistas</string>
+    <string name="menu_collectors">Coleccionistas</string>
+    <string name="menu_options">Opciones</string>
 </resources>
