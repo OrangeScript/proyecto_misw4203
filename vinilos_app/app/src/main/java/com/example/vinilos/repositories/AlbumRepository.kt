@@ -1,9 +1,9 @@
-package repositories
+package com.example.vinilos.repositories
 
 import android.app.Application
 import com.android.volley.VolleyError
 import com.example.vinilos.modelos.Album
-import network.NetworkServiceAdapter
+import com.example.vinilos.network.NetworkServiceAdapter
 import java.util.stream.Collector
 
 class AlbumRepository (val application: Application){

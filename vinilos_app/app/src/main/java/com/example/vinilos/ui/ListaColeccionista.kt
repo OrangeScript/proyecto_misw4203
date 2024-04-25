@@ -1,4 +1,4 @@
-package com.example.vinilos.ui.ListaColeccionista
+package com.example.vinilos.ui
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.vinilos.R
+import com.example.vinilos.viewmodels.ListaColeccionistaViewModel
 
 class ListaColeccionista : Fragment() {
 

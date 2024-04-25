@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/listaAlbum"
-        android:name="com.example.vinilos.ui.ListaAlbum.ListaAlbum"
+        android:name="com.example.vinilos.ui.ListaAlbum"
         android:label="fragment_lista_album"
         tools:layout="@layout/fragment_lista_album" />
 
     <fragment
         android:id="@+id/listaArtista"
-        android:name="com.example.vinilos.ui.ListaArtista.ListaArtista"
+        android:name="com.example.vinilos.ui.ListaArtista"
         android:label="fragment_lista_artista"
         tools:layout="@layout/fragment_lista_artista" />
 
     <fragment
         android:id="@+id/listaColeccionista"
-        android:name="com.example.vinilos.ui.ListaColeccionista.ListaColeccionista"
+        android:name="com.example.vinilos.ui.ListaColeccionista"
         android:label="fragment_lista_coleccionista"
         tools:layout="@layout/fragment_lista_coleccionista" />
 

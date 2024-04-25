@@ -1,4 +1,4 @@
-package com.example.vinilos.ui.ListaAlbum
+package com.example.vinilos.ui
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
+import com.example.vinilos.viewmodels.ListaAlbumViewModel
 
 class ListaAlbum : Fragment() {
 

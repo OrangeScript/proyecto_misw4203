@@ -1,4 +1,4 @@
-package com.example.vinilos.ui.ListaAlbum
+package com.example.vinilos.viewmodels
 
 import android.app.Application
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
-import network.NetworkServiceAdapter
+import com.example.vinilos.network.NetworkServiceAdapter
 import com.example.vinilos.modelos.Album
 
 class ListaAlbumViewModel(application: Application) : AndroidViewModel(application) {
@@ -30,18 +30,18 @@ class ListaAlbumViewModel(application: Application) : AndroidViewModel(applicati
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    init {
-        refreshDataFromNetwork()
-    }
+    //init {
+    //    refreshDataFromNetwork()
+    //}
 
-    private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getAlbums.refreshData({
-            _albums.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
-            _eventNetworkError.value = true
-        })
-    }
+    //private fun refreshDataFromNetwork() {
+    //    NetworkServiceAdapter.getInstance(getApplication()).getAlbums.refreshData({
+    //        _albums.postValue(it)
+    //        _eventNetworkError.value = false
+    //        _isNetworkErrorShown.value = false
+    //    },{
+    //        _eventNetworkError.value = true
+    //    })
+    //}
 
 }
