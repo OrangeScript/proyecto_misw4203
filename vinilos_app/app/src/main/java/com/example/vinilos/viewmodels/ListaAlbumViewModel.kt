@@ -1,19 +1,15 @@
 package com.example.vinilos.viewmodels
 
 import android.app.Application
-import android.os.Bundle
-import android.widget.TextView
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.RecyclerView
-import com.example.vinilos.R
-import com.example.vinilos.network.NetworkServiceAdapter
 import com.example.vinilos.modelos.Album
+import com.example.vinilos.repositories.AlbumRepository
 
 class ListaAlbumViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val AlbumRepository = AlbumRepository(application)
 
     private val _albums = MutableLiveData<List<Album>>()
 
@@ -30,18 +26,18 @@ class ListaAlbumViewModel(application: Application) : AndroidViewModel(applicati
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    //init {
-    //    refreshDataFromNetwork()
-    //}
+    init {
+        refreshDataFromNetwork()
+    }
 
-    //private fun refreshDataFromNetwork() {
-    //    NetworkServiceAdapter.getInstance(getApplication()).getAlbums.refreshData({
-    //        _albums.postValue(it)
-    //        _eventNetworkError.value = false
-    //        _isNetworkErrorShown.value = false
-    //    },{
-    //        _eventNetworkError.value = true
-    //    })
-    //}
+    private fun refreshDataFromNetwork() {
+        AlbumRepository.refreshData({
+            _albums.postValue(it)
+            _eventNetworkError.value = false
+            _isNetworkErrorShown.value = false
+        },{
+            _eventNetworkError.value = true
+        })
+    }
 
 }
