@@ -1,14 +1,10 @@
-package com.example.vinilos
+package com.example.vinilos.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.vinilos.R
 import com.example.vinilos.databinding.ActivityMainBinding
-import com.example.vinilos.ui.ListaAlbum.ListaAlbum
-import com.example.vinilos.ui.DetalleAlbum.DetalleAlbum
-import com.example.vinilos.ui.ListaArtista.ListaArtista
-import com.example.vinilos.ui.ListaColeccionista.ListaColeccionista
 import com.example.vinilos.ui.Opciones.Opciones
 import com.google.android.material.navigation.NavigationBarView
 

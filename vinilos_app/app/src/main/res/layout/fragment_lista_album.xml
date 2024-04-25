@@ -5,18 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/Vinilos"
-    tools:context=".ui.ListaAlbum.ListaAlbum">
+    tools:context=".ui.ListaAlbum">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <ListView
+        android:id="@+id/listaAlbum"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginVertical="5dp">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_albums"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent" />
 </FrameLayout>
