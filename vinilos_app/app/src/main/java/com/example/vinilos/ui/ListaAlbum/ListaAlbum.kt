@@ -31,7 +31,7 @@ class ListaAlbum : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_lista_album, container, false)
-        recyclerView = view.findViewById(R.id.rv_albums)
+        //recyclerView = view.findViewById(R.id.rv_albums)
         setupRecyclerView()
         return view
     }
