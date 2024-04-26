@@ -1,6 +1,7 @@
 package com.example.vinilos.network
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -9,6 +10,9 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.modelos.Album
+import com.example.vinilos.modelos.Banda
+import com.example.vinilos.modelos.Coleccionista
+import com.example.vinilos.modelos.Musico
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -62,6 +66,110 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    fun getAlbum(AlbumId: String, onComplete:(resp:JSONObject)->Unit, onError: (error:VolleyError)->Unit){
+
+        requestQueue.add(getRequest("albums/$AlbumId",
+            Response.Listener<String> { response ->
+                val resp = JSONObject(response)
+                onComplete(resp)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getBandas(onComplete:(resp:List<Banda>)->Unit, onError: (error:VolleyError)->Unit) {
+        requestQueue.add(getRequest("bands",
+            Response.Listener<String> { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Banda>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(
+                        i,
+                        Banda(
+                            id = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            description = item.getString("description"),
+                            creationdate = item.getString("creationDate")))
+                }
+                onComplete(list)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getBanda(BandaId: String, onComplete:(resp:JSONObject)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$BandaId",
+            Response.Listener<String> { response ->
+                val resp = JSONObject(response)
+                onComplete(resp)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getMusicos(onComplete:(resp:List<Musico>)->Unit, onError: (error:VolleyError)->Unit) {
+        requestQueue.add(getRequest("bands",
+            Response.Listener<String> { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Musico>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(
+                        i,
+                        Musico(
+                            id = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            description = item.getString("description"),
+                            birthdate = item.getString("birthDate")))
+                }
+                onComplete(list)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getMusico(MusicoId: String, onComplete:(resp:JSONObject)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$MusicoId",
+            Response.Listener<String> { response ->
+                val resp = JSONObject(response)
+                onComplete(resp)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+
+    }
+
+    fun getColeccionistas(onComplete:(resp:List<Coleccionista>)->Unit, onError: (error:VolleyError)->Unit) {
+        requestQueue.add(getRequest("collectors",
+            Response.Listener<String> { response ->
+                Log.d("tagb", response)
+                val resp = JSONArray(response)
+                val list = mutableListOf<Coleccionista>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(
+                        i,
+                        Coleccionista(
+                            id = item.getInt("id"),
+                            name = item.getString("name"),
+                            telephone = item.getString("telephone"),
+                            email = item.getString("email")))
+                }
+                onComplete(list)
+            },
+            Response.ErrorListener {
+                onError(it)
+                Log.d("", it.message.toString())
+            }))
+    }
 
 
 }

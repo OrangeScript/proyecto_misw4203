@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.navView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.fragment_lista_artista -> replaceFragment(ListaArtista())
+                R.id.fragment_lista_artista -> replaceFragment(ListaBanda())
                 R.id.fragment_lista_album -> replaceFragment(ListaAlbum())
                 R.id.fragment_lista_coleccionita -> replaceFragment(ListaColeccionista())
                 R.id.fragment_opciones -> replaceFragment(Opciones())
