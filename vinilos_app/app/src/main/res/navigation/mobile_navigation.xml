@@ -9,11 +9,15 @@
         android:id="@+id/listaAlbum"
         android:name="com.example.vinilos.ui.ListaAlbum"
         android:label="fragment_lista_album"
-        tools:layout="@layout/fragment_lista_album" />
+        tools:layout="@layout/fragment_lista_album" >
+        <action
+            android:id="@+id/action_listaAlbum_to_detalleAlbum2"
+            app:destination="@id/detalleAlbum" />
+    </fragment>
 
     <fragment
         android:id="@+id/listaArtista"
-        android:name="com.example.vinilos.ui.ListaArtista"
+        android:name="com.example.vinilos.ui.ListaBanda"
         android:label="fragment_lista_artista"
         tools:layout="@layout/fragment_lista_artista" />
 
@@ -28,5 +32,18 @@
         android:name="com.example.vinilos.ui.Opciones.Opciones"
         android:label="fragment_opciones"
         tools:layout="@layout/fragment_opciones" />
+
+    <fragment
+        android:id="@+id/detalleAlbum"
+        android:name="com.example.vinilos.ui.DetalleAlbum"
+        android:label="fragment_detalle_album"
+        tools:layout="@layout/fragment_detalle_album" />
+
+    <fragment
+        android:id="@+id/detalleBanda"
+        android:name="com.example.vinilos.ui.DetalleBanda"
+        android:label="fragment_detalle_banda"
+        tools:layout="@layout/fragment_detalle_banda" />
+
 
 </navigation>
