@@ -1,4 +1,4 @@
-package com.example.vinilos.ui.ListaColeccionista
+package com.example.vinilos.ui
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -7,14 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.vinilos.R
+import com.example.vinilos.viewmodels.ListaBandaViewModel
 
-class ListaColeccionista : Fragment() {
+class ListaBanda : Fragment() {
 
     companion object {
-        fun newInstance() = ListaColeccionista()
+        fun newInstance() = ListaBanda()
     }
 
-    private val viewModel: ListaColeccionistaViewModel by viewModels()
+    private val viewModel: ListaBandaViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +27,6 @@ class ListaColeccionista : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_lista_coleccionista, container, false)
+        return inflater.inflate(R.layout.fragment_lista_banda, container, false)
     }
 }

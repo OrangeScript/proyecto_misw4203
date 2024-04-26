@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.vinilos.R
+import com.example.vinilos.viewmodels.OpcionesViewModel
 
 class Opciones : Fragment() {
 
