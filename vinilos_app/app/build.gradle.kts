@@ -3,6 +3,8 @@ import org.jetbrains.kotlin.gradle.targets.js.KotlinJsCompilerAttribute
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+//    id("com.google.devtools.ksp")
+    kotlin("kapt")
 }
 
 android {
@@ -44,7 +46,7 @@ android {
         viewBinding = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.12"
     }
     packaging {
         resources {
@@ -57,13 +59,11 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
     val nav_version = "2.7.7"
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -99,6 +99,10 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     // Feature module Support
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+
+    // Add Glide for image loading support
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    kapt("com.github.bumptech.glide:glide:4.16.0")
 
     // Testing Navigation
     //androidTestImplementation(libs.androidx.navigation.testing)

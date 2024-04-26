@@ -2,16 +2,14 @@ package com.example.vinilos.repositories
 
 import android.app.Application
 import android.app.SharedElementCallback
+import androidx.lifecycle.AndroidViewModel
 import com.android.volley.VolleyError
 import com.example.vinilos.modelos.Album
 import com.example.vinilos.network.NetworkServiceAdapter
-import org.json.JSONObject
 
-class DetalleAlbumRepository (val application: Application){
-
+class DetalleAlbumRepository (application: Application): AndroidViewModel(application) {
     private val networkServiceAdapter = NetworkServiceAdapter.getInstance(application)
-
-    fun refreshData(AlbumId: String, onComplete: (resp: JSONObject) -> Unit, onError: (VolleyError)->Unit){
-        networkServiceAdapter.getAlbum(AlbumId, onComplete,onError)
+    fun refreshData(id: Int, onComplete: (resp: Album) -> Unit, onError: (VolleyError)->Unit) {
+        networkServiceAdapter.getAlbum(id, onComplete, onError)
     }
 }

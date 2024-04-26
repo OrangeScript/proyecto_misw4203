@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.vinilos.R
 import com.example.vinilos.viewmodels.DetalleAlbumViewModel
+import com.example.vinilos.databinding.FragmentDetalleAlbumBinding
 
 class DetalleAlbum : Fragment() {
 
