@@ -66,12 +66,18 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    fun getAlbum(AlbumId: String, onComplete:(resp:JSONObject)->Unit, onError: (error:VolleyError)->Unit){
-
-        requestQueue.add(getRequest("albums/$AlbumId",
+    fun getAlbum(albumId: Int, onComplete:(resp:Album)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$albumId",
             Response.Listener<String> { response ->
                 val resp = JSONObject(response)
-                onComplete(resp)
+                var objectResp = Album(id = resp.getInt("id"),
+                    name = resp.getString("name"),
+                    cover = resp.getString("cover"),
+                    releaseDate = resp.getString("releaseDate"),
+                    genre = resp.getString("genre"),
+                    description = resp.getString("description"),
+                    recordLabel = resp.getString("recordLabel"))
+                onComplete(objectResp)
             },
             Response.ErrorListener {
                 onError(it)

@@ -8,12 +8,13 @@ import androidx.lifecycle.ViewModel
 import com.example.vinilos.modelos.Album
 import com.example.vinilos.repositories.DetalleAlbumRepository
 
-class DetalleAlbumViewModel(application: Application) : AndroidViewModel(application) {
+class DetalleAlbumViewModel(application: Application, albumId: Int) : AndroidViewModel(application) {
 
     private val DetalleAlbumRepository = DetalleAlbumRepository(application)
 
     private val _album = MutableLiveData<Album>()
 
+    val albumId : Int = albumId
     val album: LiveData<Album>
         get() = _album
 
@@ -32,15 +33,16 @@ class DetalleAlbumViewModel(application: Application) : AndroidViewModel(applica
     }
 
     private fun refreshDataFromNetwork() {
-    //    DetalleAlbumRepository.refreshData({
-    //
-    //    },
-    //        {
-    //        _album.postValue(it)
-    //        _eventNetworkError.value = false
-    //        _isNetworkErrorShown.value = false
-    //    },{
-    //        _eventNetworkError.value = true
-    //    })
+        DetalleAlbumRepository.refreshData(
+            albumId,
+            {
+                _album.postValue(it)
+                _eventNetworkError.value = false
+                _isNetworkErrorShown.value = false
+            },
+            {
+                _eventNetworkError.value = true
+            }
+        )
     }
 }
