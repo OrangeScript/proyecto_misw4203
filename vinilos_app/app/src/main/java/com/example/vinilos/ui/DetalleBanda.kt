@@ -1,4 +1,6 @@
 package com.example.vinilos.ui
 
-class DetalleBanda {
+import androidx.fragment.app.Fragment
+
+class DetalleBanda : Fragment(){
 }
