@@ -68,7 +68,7 @@ class NetworkServiceAdapter constructor(context: Context) {
 
     fun getAlbum(albumId: Int, onComplete:(resp:Album)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("albums/$albumId",
-            Response.Listener<String> { response ->
+            { response ->
                 val resp = JSONObject(response)
                 var objectResp = Album(id = resp.getInt("id"),
                     name = resp.getString("name"),
@@ -79,7 +79,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                     recordLabel = resp.getString("recordLabel"))
                 onComplete(objectResp)
             },
-            Response.ErrorListener {
+            {
                 onError(it)
             }))
     }
