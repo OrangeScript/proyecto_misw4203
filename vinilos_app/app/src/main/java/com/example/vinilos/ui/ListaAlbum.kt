@@ -1,6 +1,5 @@
 package com.example.vinilos.ui
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -78,55 +77,6 @@ class ListaAlbum : Fragment() {
         if (!viewModel.isNetworkErrorShown.value!!) {
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
-
-}
-
-    /*override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel: ListaAlbumViewModel by viewModels()
-        viewModel = tempViewModel
-    }*/
-
-    /*override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentListaAlbumBinding.inflate(inflater, container, false)
-
-        binding.recyclerViewAlbums.layoutManager = LinearLayoutManager(requireContext())
-
-        viewModel.albums.observe(viewLifecycleOwner){
-            val adapter = AlbumAdapter(requireContext(), it, viewModel)
-            binding.recyclerViewAlbums.adapter = adapter
         }
-
-        return binding.root*/
-        /*val view = inflater.inflate(R.layout.fragment_lista_album, container, false)
-        recyclerView = view.findViewById(R.id.recyclerViewAlbums)
-        setupRecyclerView()
-        return view*/
     }
-
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val tempViewModel: ListaAlbumViewModel by viewModels()
-        viewModel = tempViewModel
-    }*/
-
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        observeViewModel()
-    }
-
-    private fun setupRecyclerView() {
-        albumAdapter = AlbumAdapter()
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = albumAdapter
-    }
-
-    private fun observeViewModel() {
-        viewModel.albums.observe(viewLifecycleOwner) { albums ->
-
-        }
-    }*/
 }
