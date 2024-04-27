@@ -4,19 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="album"
+            type="com.example.vinilos.modelos.Album" />
     </data>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:theme="@style/Vinilos"
-        tools:context=".ui.ListaAlbum">
+        tools:context="ui.ListaAlbum">
 
-
-        <ListView
-            android:id="@+id/listaAlbum"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewAlbums"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </FrameLayout>
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </RelativeLayout>
 </layout>
