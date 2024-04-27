@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.modelos.Album
 import com.example.vinilos.repositories.AlbumRepository
@@ -31,7 +32,7 @@ class ListaAlbumViewModel(application: Application) : AndroidViewModel(applicati
         refreshDataFromNetwork()
     }
 
-    private fun refreshDataFromNetwork() {
+    fun refreshDataFromNetwork() {
         AlbumRepository.refreshData({
             _albums.postValue(it)
             _eventNetworkError.value = false
@@ -41,4 +42,17 @@ class ListaAlbumViewModel(application: Application) : AndroidViewModel(applicati
         })
     }
 
+    fun onNetworkErrorShown() {
+        _isNetworkErrorShown.value = true
+    }
+
+    class Factory(val app: Application) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(ListaAlbumViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return ListaAlbumViewModel(app) as T
+            }
+            throw IllegalArgumentException("Unable to construct viewmodel")
+        }
+    }
 }

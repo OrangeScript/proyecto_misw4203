@@ -59,6 +59,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                             description = item.getString("description"),
                             recordLabel = item.getString("recordLabel")))
                 }
+                Log.e("tag", list.toString())
                 onComplete(list)
             },
             Response.ErrorListener {
