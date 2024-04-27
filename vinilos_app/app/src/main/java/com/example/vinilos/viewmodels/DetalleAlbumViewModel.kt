@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.modelos.Album
 import com.example.vinilos.repositories.DetalleAlbumRepository
 
@@ -44,5 +45,18 @@ class DetalleAlbumViewModel(application: Application, albumId: Int) : AndroidVie
                 _eventNetworkError.value = true
             }
         )
+    }
+
+    fun onNetworkErrorShown() {
+        _isNetworkErrorShown.value = true
+    }
+    class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(DetalleAlbumViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return DetalleAlbumViewModel(app, albumId) as T
+            }
+            throw IllegalArgumentException("Unable to construct viewmodel")
+        }
     }
 }

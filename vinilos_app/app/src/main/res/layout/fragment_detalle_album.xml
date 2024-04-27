@@ -48,7 +48,7 @@
                         android:id="@+id/DetalleAlbumFoto"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:imageUrl="@{album.cover}" />
+                        app:imageUrl="@{album.cover}"/>
                 </androidx.cardview.widget.CardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -126,13 +126,14 @@
                     android:layout_height="0dp"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:text="@{album.releaseDate}"
+                    android:text=""
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:date="@{album.releaseDate}"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
