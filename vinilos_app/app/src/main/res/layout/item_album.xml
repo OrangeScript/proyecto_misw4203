@@ -79,19 +79,6 @@
                 app:layout_constraintStart_toEndOf="@+id/albumCover"
                 app:layout_constraintTop_toBottomOf="@+id/albumGenre" />
 
-            <Button
-                android:id="@+id/verAlbum"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/Ver"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                android:background="@android:color/transparent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

@@ -27,29 +27,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginVertical="5dp"
-                android:layout_weight="0.8">
+                android:layout_weight="1">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/AlbumFoto"
+                <Button
+                    android:id="@+id/detalle_album_to_lista_album_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginBottom="32dp"
-                    app:cardBackgroundColor="#00FFFFFF"
-                    app:cardCornerRadius="20dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/background"
+                    android:text="@string/menu_goBack"
+                    android:textColor="@color/purple_200"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="5dp"
+                android:layout_weight="0.8">
+
+                <ImageView
+                    android:id="@+id/DetalleAlbumFoto"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:imageUrl="@{album.cover}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/DetalleAlbumFoto"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:imageUrl="@{album.cover}"/>
-                </androidx.cardview.widget.CardView>
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

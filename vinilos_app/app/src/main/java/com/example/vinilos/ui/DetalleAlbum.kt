@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.vinilos.R
 import com.example.vinilos.viewmodels.DetalleAlbumViewModel
@@ -60,5 +62,20 @@ class DetalleAlbum : Fragment() {
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val goBackButton: Button = view.findViewById(R.id.detalle_album_to_lista_album_button)
+
+        goBackButton.setOnClickListener{
+            goFromAlbumDetailToList(view)
+        }
+    }
+
+    fun goFromAlbumDetailToList(view: View) {
+        view.findNavController().popBackStack()
+        //navController.navigate(R.id.fragment_lista_album)
     }
 }
