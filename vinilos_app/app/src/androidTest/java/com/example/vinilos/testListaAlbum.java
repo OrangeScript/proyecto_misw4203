@@ -22,17 +22,17 @@ public class testListaAlbum {
 
     @Test
     public void mainActivityTest2() {
-        ViewInteraction listaAlbumExists = onView(withId(R.id.listaAlbum));
+        ViewInteraction listaAlbumExists = onView(allOf(withId(R.id.listaAlbum), isDisplayed()));
 
-        ViewInteraction elementoAlbumExiste = onView(withId(R.id.AlbumCardView));
+        ViewInteraction elementoAlbumExiste = onView(allOf(withId(R.id.AlbumCardView), isDisplayed()));
 
-        ViewInteraction coverAlbumExiste = onView(withId(R.id.albumCover));
+        ViewInteraction coverAlbumExiste = onView(allOf(withId(R.id.albumCover), isDisplayed()));
 
-        ViewInteraction nombreAlbumExiste = onView(withId(R.id.albumName));
+        ViewInteraction nombreAlbumExiste = onView(allOf(withId(R.id.albumName), isDisplayed()));
 
-        ViewInteraction generoAlbumExiste = onView(withId(R.id.albumGenre));
+        ViewInteraction generoAlbumExiste = onView(allOf(withId(R.id.albumGenre), isDisplayed()));
 
-        ViewInteraction fechaSalidaAlbumExiste = onView(withId(R.id.albumReleaseDate));
+        ViewInteraction fechaSalidaAlbumExiste = onView(allOf(withId(R.id.albumReleaseDate), isDisplayed()));
     }
 
 }
