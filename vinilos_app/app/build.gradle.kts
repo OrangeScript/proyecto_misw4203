@@ -61,6 +61,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.espresso.contrib)
     val nav_version = "2.7.7"
 
     implementation(libs.androidx.legacy.support.v4)
