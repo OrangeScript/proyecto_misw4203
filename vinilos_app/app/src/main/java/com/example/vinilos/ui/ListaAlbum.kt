@@ -60,7 +60,6 @@ class ListaAlbum : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        activity.actionBar?.title = getString(R.string.menu_albums)
         viewModel = ViewModelProvider(this, ListaAlbumViewModel.Factory(activity.application))
             .get(ListaAlbumViewModel::class.java)
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {

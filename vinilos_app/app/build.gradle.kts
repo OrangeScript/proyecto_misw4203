@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
 //    id("com.google.devtools.ksp")
     kotlin("kapt")
+    id("androidx.navigation.safeargs.kotlin")
+
 }
 
 android {
@@ -59,11 +61,12 @@ android {
 }
 
 dependencies {
+    val nav_version = "2.7.7"
+
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
-    val nav_version = "2.7.7"
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -95,18 +98,22 @@ dependencies {
     implementation ("com.google.code.gson:gson:2.8.2")
     implementation ("com.squareup.retrofit2:converter-gson:2.3.0")
     implementation ("com.squareup.retrofit2:converter-scalars:2.9.0")
+
+    // Java
+    implementation ("androidx.navigation:navigation-fragment:$nav_version")
+    implementation ("androidx.navigation:navigation-ui:$nav_version")
+
+    // Kotlin
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
     // Feature module Support
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+
+    // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
 
     // Add Glide for image loading support
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:glide:4.16.0")
-
-    // Testing Navigation
-    //androidTestImplementation(libs.androidx.navigation.testing)
-
-    // Jetpack Compose Integration
-    //implementation(libs.androidx.navigation.compose)
 }
