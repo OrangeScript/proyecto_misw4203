@@ -2,26 +2,10 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="app">
-        <State>
-          <runningDeviceTargetSelectedWithDropDown>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="R5CW40CCXKD" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-28T17:57:10.207849700Z" />
-        </State>
-      </entry>
-      <entry key="mainActivityTest2()">
+      <entry key="MainActivity">
         <State />
       </entry>
-      <entry key="mainActivityTest2() (1)">
+      <entry key="testListaAlbum">
         <State />
       </entry>
     </value>
