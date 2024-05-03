@@ -6,17 +6,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.vinilos.modelos.Banda
-import com.example.vinilos.repositories.BandaRepository
+import com.example.vinilos.modelos.Musico
+import com.example.vinilos.repositories.MusicoRepository
 
-class ListaBandaViewModel(application: Application) : AndroidViewModel(application) {
+class ListaMusicoViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val BandaRepository = BandaRepository(application)
+    private val MusicoRepository = MusicoRepository(application)
 
-    private val _bandas = MutableLiveData<List<Banda>>()
+    private val _musicos = MutableLiveData<List<Musico>>()
 
-    val bandas: LiveData<List<Banda>>
-        get() = _bandas
+    val musicos: LiveData<List<Musico>>
+        get() = _musicos
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -33,8 +33,8 @@ class ListaBandaViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     fun refreshDataFromNetwork() {
-        BandaRepository.refreshData({
-            _bandas.postValue(it)
+        MusicoRepository.refreshData({
+            _musicos.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
@@ -48,11 +48,12 @@ class ListaBandaViewModel(application: Application) : AndroidViewModel(applicati
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(ListaBandaViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(ListaMusicoViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return ListaBandaViewModel(app) as T
+                return ListaMusicoViewModel(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
     }
+
 }
