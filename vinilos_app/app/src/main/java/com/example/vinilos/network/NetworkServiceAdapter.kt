@@ -107,13 +107,19 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    fun getBanda(BandaId: String, onComplete:(resp:JSONObject)->Unit, onError: (error:VolleyError)->Unit){
+    fun getBanda(BandaId: Int, onComplete:(resp:Banda)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("albums/$BandaId",
-            Response.Listener<String> { response ->
+            { response ->
                 val resp = JSONObject(response)
-                onComplete(resp)
+                var objectResp = Banda(id = resp.getInt("id"),
+                    name = resp.getString("name"),
+                    image = resp.getString("image"),
+                    description = resp.getString("description"),
+                    creationdate = resp.getString("creationdate"))
+
+                onComplete(objectResp)
             },
-            Response.ErrorListener {
+            {
                 onError(it)
             }))
     }
@@ -141,13 +147,18 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    fun getMusico(MusicoId: String, onComplete:(resp:JSONObject)->Unit, onError: (error:VolleyError)->Unit){
+    fun getMusico(MusicoId: Int, onComplete:(resp:Musico)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("albums/$MusicoId",
-            Response.Listener<String> { response ->
+            { response ->
                 val resp = JSONObject(response)
-                onComplete(resp)
+                val objectResp = Musico(id = resp.getInt("id"),
+                    name = resp.getString("name"),
+                    image = resp.getString("image"),
+                    description = resp.getString("description"),
+                    birthdate = resp.getString("birthdate"))
+                onComplete(objectResp)
             },
-            Response.ErrorListener {
+            {
                 onError(it)
             }))
 
