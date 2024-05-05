@@ -7,11 +7,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.modelos.Banda
-import com.example.vinilos.repositories.DetalleBandaRepository
+import com.example.vinilos.repositories.ArtistaRepository
 
-class DetalleBandaViewModel(application: Application, bandaId: Int) : AndroidViewModel(application) {
+class DetalleArtistaViewModel(application: Application, bandaId: Int) : AndroidViewModel(application) {
 
-    private val DetalleBandaRepository = DetalleBandaRepository(application)
+    private val artistaRepository = ArtistaRepository(application)
 
     private val _banda = MutableLiveData<Banda>()
 
@@ -30,32 +30,32 @@ class DetalleBandaViewModel(application: Application, bandaId: Int) : AndroidVie
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    init {
-        refreshDataFromNetwork()
-    }
-
-    private fun refreshDataFromNetwork() {
-        DetalleBandaRepository.refreshData(
-            bandaId,
-            {
-                _banda.postValue(it)
-                _eventNetworkError.value = false
-                _isNetworkErrorShown.value = false
-            },
-            {
-                _eventNetworkError.value = true
-            }
-        )
-    }
+//    init {
+//        refreshDataFromNetwork()
+//    }
+//
+//    private fun refreshDataFromNetwork() {
+//        artistaRepository.refreshData(
+//            bandaId,
+//            {
+//                _banda.postValue(it)
+//                _eventNetworkError.value = false
+//                _isNetworkErrorShown.value = false
+//            },
+//            {
+//                _eventNetworkError.value = true
+//            }
+//        )
+//    }
 
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }
     class Factory(val app: Application, val bandaId: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(DetalleBandaViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(DetalleArtistaViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return DetalleBandaViewModel(app, bandaId) as T
+                return DetalleArtistaViewModel(app, bandaId) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
