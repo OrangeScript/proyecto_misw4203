@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/listaArtista"
-        android:name="com.example.vinilos.ui.ListaBanda"
+        android:name="com.example.vinilos.ui.ListaArtista"
         android:label="fragment_lista_artista"
         tools:layout="@layout/fragment_lista_artista" />
 
@@ -45,7 +45,7 @@
 
     <fragment
         android:id="@+id/detalleBanda"
-        android:name="com.example.vinilos.ui.DetalleBanda"
+        android:name="com.example.vinilos.ui.DetalleArtista"
         android:label="fragment_detalle_banda"
         tools:layout="@layout/fragment_detalle_banda" />
 

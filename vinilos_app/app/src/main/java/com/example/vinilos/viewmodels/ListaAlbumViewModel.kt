@@ -6,12 +6,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.android.volley.TimeoutError
 import com.example.vinilos.modelos.Album
 import com.example.vinilos.repositories.AlbumRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ListaAlbumViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val AlbumRepository = AlbumRepository(application)
+    private val albumRepository = AlbumRepository(application)
 
     private val _albums = MutableLiveData<List<Album>>()
 
@@ -32,14 +37,19 @@ class ListaAlbumViewModel(application: Application) : AndroidViewModel(applicati
         refreshDataFromNetwork()
     }
 
-    fun refreshDataFromNetwork() {
-        AlbumRepository.refreshData({
-            _albums.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
-            _eventNetworkError.value = true
-        })
+    private fun refreshDataFromNetwork() {
+            viewModelScope.launch(Dispatchers.Default) {
+                try {
+                    withContext(Dispatchers.IO) {
+                        val data = albumRepository.refreshDataAlbums()
+                        _albums.postValue(data)
+                    }
+                    _eventNetworkError.postValue(false)
+                    _isNetworkErrorShown.postValue(false)
+                } catch (e: TimeoutError) {
+                    _eventNetworkError.postValue(true)
+                }
+            }
     }
 
     fun onNetworkErrorShown() {

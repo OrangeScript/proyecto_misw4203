@@ -99,6 +99,7 @@ dependencies {
     implementation ("com.google.code.gson:gson:2.8.2")
     implementation ("com.squareup.retrofit2:converter-gson:2.3.0")
     implementation ("com.squareup.retrofit2:converter-scalars:2.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 
     // Java
     implementation ("androidx.navigation:navigation-fragment:$nav_version")

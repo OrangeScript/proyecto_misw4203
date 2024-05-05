@@ -7,15 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.vinilos.R
-import com.example.vinilos.viewmodels.ListaBandaViewModel
+import com.example.vinilos.viewmodels.ListaArtistaViewModel
 
-class ListaBanda : Fragment() {
+class ListaArtista : Fragment() {
 
     companion object {
-        fun newInstance() = ListaBanda()
+        fun newInstance() = ListaArtista()
     }
 
-    private val viewModel: ListaBandaViewModel by viewModels()
+    private val viewModel: ListaArtistaViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +27,6 @@ class ListaBanda : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_lista_banda, container, false)
+        return inflater.inflate(R.layout.fragment_lista_artista, container, false)
     }
 }

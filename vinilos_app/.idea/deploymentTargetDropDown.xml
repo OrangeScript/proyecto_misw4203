@@ -4,25 +4,19 @@
     <value>
       <entry key="app">
         <State>
-          <runningDeviceTargetSelectedWithDropDown>
+          <targetSelectedWithDropDown>
             <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
+              <type value="QUICK_BOOT_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="R5CW40CCXKD" />
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\simon\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd" />
                 </Key>
               </deviceKey>
             </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-28T17:57:10.207849700Z" />
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-04-30T14:03:54.003135800Z" />
         </State>
-      </entry>
-      <entry key="mainActivityTest2()">
-        <State />
-      </entry>
-      <entry key="mainActivityTest2() (1)">
-        <State />
       </entry>
     </value>
   </component>
