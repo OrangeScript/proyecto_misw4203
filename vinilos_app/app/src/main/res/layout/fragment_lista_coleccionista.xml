@@ -16,7 +16,7 @@
         tools:context="ui.ListaColeccionista">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewAlbums"
+            android:id="@+id/recyclerViewColeccionista"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"

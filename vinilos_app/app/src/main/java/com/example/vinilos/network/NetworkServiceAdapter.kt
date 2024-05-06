@@ -174,27 +174,25 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    fun getColeccionistas(onComplete:(resp:List<Coleccionista>)->Unit, onError: (error:VolleyError)->Unit) {
+    suspend fun getColeccionistas() = suspendCoroutine<List<Coleccionista>> { cont ->
         requestQueue.add(getRequest("collectors",
             Response.Listener<String> { response ->
-                Log.d("tagb", response)
                 val resp = JSONArray(response)
                 val list = mutableListOf<Coleccionista>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
-                    list.add(
-                        i,
-                        Coleccionista(
-                            id = item.getInt("id"),
-                            name = item.getString("name"),
-                            telephone = item.getString("telephone"),
-                            email = item.getString("email")))
+                    val coleccionista = Coleccionista(
+                        id = item.getInt("id"),
+                        name = item.getString("name"),
+                        telephone = item.getString("telephone"),
+                        email = item.getString("email")
+                    )
+                    list.add(i, coleccionista)
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             Response.ErrorListener {
-                onError(it)
-                Log.d("", it.message.toString())
+                cont.resumeWithException(it)
             }))
     }
 
