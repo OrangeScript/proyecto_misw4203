@@ -6,13 +6,9 @@ import com.example.vinilos.modelos.Coleccionista
 import com.example.vinilos.network.NetworkServiceAdapter
 
 class ColeccionistaRepository (val application: Application){
-    fun refreshData(callback: (List<Coleccionista>)->Unit, onError: (VolleyError)->Unit) {
+    private val networkServiceAdapter = NetworkServiceAdapter.getInstance(application)
 
-        NetworkServiceAdapter.getInstance(application).getColeccionistas({
-
-            callback(it)
-        },
-            onError
-        )
+    suspend fun refreshDataCollectors(): List<Coleccionista> {
+        return networkServiceAdapter.getColeccionistas()
     }
 }
