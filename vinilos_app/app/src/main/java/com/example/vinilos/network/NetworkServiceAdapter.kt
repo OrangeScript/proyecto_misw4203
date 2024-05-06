@@ -10,9 +10,10 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.modelos.Album
-import com.example.vinilos.modelos.Banda
 import com.example.vinilos.modelos.Coleccionista
+import com.example.vinilos.modelos.Artista
 import com.example.vinilos.modelos.Musico
+import com.example.vinilos.modelos.Banda
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -91,11 +92,11 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    suspend fun getBandas() = suspendCoroutine<List<Banda>> { cont ->
+    suspend fun getBandas() = suspendCoroutine<List<Artista>> { cont ->
         requestQueue.add(getRequest("bands",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
-                val list = mutableListOf<Banda>()
+                val list = mutableListOf<Artista>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
                     val banda = Banda(
@@ -132,11 +133,11 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    suspend fun getMusicos() = suspendCoroutine<List<Musico>> { cont ->
+    suspend fun getMusicos() = suspendCoroutine<List<Artista>> { cont ->
         requestQueue.add(getRequest("musicians",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
-                val list = mutableListOf<Musico>()
+                val list = mutableListOf<Artista>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
                     val musico = Musico(
