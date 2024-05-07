@@ -1,23 +1,22 @@
 package com.example.vinilos.ui
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil.setContentView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.vinilos.R
-import com.example.vinilos.viewmodels.DetalleAlbumViewModel
 import com.example.vinilos.databinding.FragmentDetalleAlbumBinding
 import com.example.vinilos.modelos.Album
+import com.example.vinilos.viewmodels.DetalleAlbumViewModel
 
 class DetalleAlbum : Fragment() {
 
@@ -28,6 +27,7 @@ class DetalleAlbum : Fragment() {
     private var _binding: FragmentDetalleAlbumBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: DetalleAlbumViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
