@@ -37,9 +37,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="DuplicateIds"
-                tools:src="@tools:sample/avatars"
-                />
+                app:srcCompat="@drawable/baseline_broken_image_24"
+                tools:ignore="DuplicateIds" />
 
             <TextView
                 android:id="@+id/artistaName"
