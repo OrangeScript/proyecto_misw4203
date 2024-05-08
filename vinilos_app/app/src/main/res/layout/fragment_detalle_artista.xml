@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="banda"
-            type="com.example.vinilos.modelos.Banda" />
+            name="artista"
+            type="com.example.vinilos.modelos.Artista" />
     </data>
 
     <FrameLayout
@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:background="@color/background"
-                    android:text="@string/menu_goBack"
+                    android:text="@string/Atras"
                     android:textColor="@color/purple_200"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
                     android:id="@+id/detalleBandaFoto"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    app:imageUrl="@{banda.image}"
+                    app:imageUrl="@{artista.image}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@{banda.name}"
+                    android:text="@{artista.name}"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="34sp"
@@ -86,19 +86,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/DetalleBandaCreacion"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:text="@{banda.creationdate}"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -107,12 +95,12 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/DetalleBandaDescripcon"
+                    android:id="@+id/DetalleBandaDescripcion"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:text="@{banda.description}"
+                    android:text="@{`Descripcion:` + artista.description}"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"

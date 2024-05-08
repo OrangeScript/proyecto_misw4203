@@ -44,10 +44,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/detalleBanda"
+        android:id="@+id/detalleArtista"
         android:name="com.example.vinilos.ui.DetalleArtista"
         android:label="fragment_detalle_banda"
-        tools:layout="@layout/fragment_detalle_banda" />
+        tools:layout="@layout/fragment_detalle_artista" />
 
 
 </navigation>
