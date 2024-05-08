@@ -6,4 +6,6 @@
     <string name="menu_options">Opciones</string>
     <string name="menu_goBack">Atras</string>
     <string name="Ver">Ver</string>
+    <string name="Descripcion">Descripcion:</string>
+    <string name="Atras">Atras</string>
 </resources>
