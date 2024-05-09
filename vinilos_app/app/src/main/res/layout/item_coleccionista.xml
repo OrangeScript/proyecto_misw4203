@@ -16,19 +16,19 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="16dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginStart="25dp"
+        app:cardBackgroundColor="#1E1E1E"
         app:cardCornerRadius="20dp"
-        app:cardElevation="5dp"
-        app:cardBackgroundColor="#1E1E1E">
+        app:cardElevation="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/artistaImage"
+                android:id="@+id/coleccionistaImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="20dp"
@@ -41,20 +41,53 @@
                 tools:ignore="DuplicateIds" />
 
             <TextView
-                android:id="@+id/artistaName"
+                android:id="@+id/coleccionistaName"
                 android:layout_width="170dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
                 android:ellipsize="end"
                 android:ems="10"
                 android:maxLines="1"
                 android:text="@{coleccionista.name}"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/artistaImage"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/coleccionistaMail"
+                android:layout_width="170dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:ellipsize="end"
+                android:ems="10"
+                android:maxLines="1"
+                android:text="@{coleccionista.email}"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/coleccionistaName" />
+
+            <TextView
+                android:id="@+id/coleccionistaTelefono"
+                android:layout_width="170dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:ellipsize="end"
+                android:ems="10"
+                android:maxLines="1"
+                android:text="@{coleccionista.telephone}"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/coleccionistaMail" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
 </layout>
