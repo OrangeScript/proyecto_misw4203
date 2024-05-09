@@ -100,6 +100,7 @@
                     android:layout_height="0dp"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
+                    android:justificationMode="inter_word"
                     android:text="@{`Descripcion:` + artista.description}"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"

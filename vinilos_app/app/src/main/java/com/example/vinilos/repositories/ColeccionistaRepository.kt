@@ -12,7 +12,4 @@ class ColeccionistaRepository (val application: Application){
         return networkServiceAdapter.getColeccionistas()
     }
 
-    suspend fun refreshDataCollector(id: Int): Coleccionista {
-        return networkServiceAdapter.getColeccionista(id)
-    }
 }

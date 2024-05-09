@@ -1,11 +1,9 @@
 package com.example.vinilos.network
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -195,23 +193,5 @@ class NetworkServiceAdapter constructor(context: Context) {
                 cont.resumeWithException(it)
             }))
     }
-
-    suspend fun getColeccionista(coleccionistaId: Int) = suspendCoroutine<Coleccionista> { cont ->
-        requestQueue.add(getRequest("collectors/$coleccionistaId",
-            Response.Listener { response ->
-                val resp = JSONObject(response)
-                val coleccionista = Coleccionista(
-                    id = resp.getInt("id"),
-                    name = resp.getString("name"),
-                    telephone = resp.getString("telephone"),
-                    email = resp.getString("email")
-                )
-                cont.resume(coleccionista)
-            },
-            Response.ErrorListener {
-                cont.resumeWithException(it)
-            }))
-    }
-
 
 }
