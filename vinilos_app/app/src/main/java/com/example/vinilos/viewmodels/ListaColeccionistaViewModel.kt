@@ -40,7 +40,7 @@ class ListaColeccionistaViewModel(application: Application) :  AndroidViewModel(
             try {
                 withContext(Dispatchers.IO) {
                     val data = collectorsRepository.refreshDataCollectors()
-                    _collectors.postValue(data)
+                    _collectors.postValue(data!!)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
