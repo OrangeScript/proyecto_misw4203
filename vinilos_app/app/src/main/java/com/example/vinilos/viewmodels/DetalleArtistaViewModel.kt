@@ -6,8 +6,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.vinilos.modelos.Banda
 import com.example.vinilos.repositories.ArtistaRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DetalleArtistaViewModel(application: Application, bandaId: Int) : AndroidViewModel(application) {
 
@@ -29,6 +33,25 @@ class DetalleArtistaViewModel(application: Application, bandaId: Int) : AndroidV
 
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
+
+    init {
+        refreshdataFromNetwork()
+    }
+
+    private fun refreshdataFromNetwork() {
+        viewModelScope.launch(Dispatchers.Default) {
+            try {
+                withContext(Dispatchers.IO) {
+                    val data = artistaRepository.refreshDataBanda(bandaId)
+                    _banda.postValue(data)
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            } catch (e: Exception) {
+                _eventNetworkError.postValue(true)
+            }
+        }
+    }
 
 //    init {
 //        refreshDataFromNetwork()
