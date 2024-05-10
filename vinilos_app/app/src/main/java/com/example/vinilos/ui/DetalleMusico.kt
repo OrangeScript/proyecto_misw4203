@@ -12,43 +12,44 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.vinilos.R
-import com.example.vinilos.databinding.FragmentDetalleArtistaBinding
-import com.example.vinilos.modelos.Banda
-import com.example.vinilos.viewmodels.DetalleArtistaViewModel
+import com.example.vinilos.databinding.FragmentDetalleMusicoBinding
+import com.example.vinilos.modelos.Musico
+import com.example.vinilos.viewmodels.DetalleMusicoViewModel
 
-class DetalleArtista : Fragment() {
+class DetalleMusico  : Fragment() {
 
     companion object {
-        fun newInstance() = DetalleArtista()
+        fun newInstance() = DetalleMusico()
     }
 
-    private var _binding: FragmentDetalleArtistaBinding? = null
+    private var _binding: FragmentDetalleMusicoBinding? = null
 
     private val binding get() = _binding!!
-    private lateinit var viewModel: DetalleArtistaViewModel
+    private lateinit var viewModel: DetalleMusicoViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDetalleArtistaBinding.inflate(inflater, container, false)
+        _binding = FragmentDetalleMusicoBinding.inflate(inflater, container, false)
         return binding.root
 
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+
         super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity) {
 
         }
 
-        val args: DetalleArtistaArgs by navArgs()
+        val args: DetalleMusicoArgs by navArgs()
         viewModel = ViewModelProvider(
             this,
-            DetalleArtistaViewModel.Factory(activity.application, args.bandaId)
+            DetalleMusicoViewModel.Factory(activity.application, args.musicoId)
         )
-            .get(DetalleArtistaViewModel::class.java)
-        viewModel.banda.observe(viewLifecycleOwner, Observer<Banda> {
+            .get(DetalleMusicoViewModel::class.java)
+        viewModel.musico.observe(viewLifecycleOwner, Observer<Musico> {
             it.apply {
                 binding.artista = this
             }
@@ -58,6 +59,7 @@ class DetalleArtista : Fragment() {
             Observer<Boolean> { isNetworkError ->
                 if (isNetworkError) onNetworkError()
             })
+
     }
 
     override fun onDestroyView() {
@@ -75,16 +77,14 @@ class DetalleArtista : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val goBackButton: Button = view.findViewById(R.id.detalle_banda_to_lista_banda_button)
+        val goBackButton: Button = view.findViewById(R.id.detalle_musico_to_lista_banda_button)
 
         goBackButton.setOnClickListener{
             goFromArtistaDetailToList(view)
         }
     }
 
-    fun goFromArtistaDetailToList(view: View) {
+    private fun goFromArtistaDetailToList(view: View) {
         view.findNavController().popBackStack()
     }
-
-
 }

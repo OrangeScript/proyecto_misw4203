@@ -6,7 +6,7 @@
     <data>
         <variable
             name="artista"
-            type="com.example.vinilos.modelos.Banda" />
+            type="com.example.vinilos.modelos.Musico" />
     </data>
 
     <FrameLayout
@@ -30,7 +30,7 @@
                 android:layout_weight="1">
 
                 <Button
-                    android:id="@+id/detalle_banda_to_lista_banda_button"
+                    android:id="@+id/detalle_musico_to_lista_banda_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
@@ -40,6 +40,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -80,6 +81,26 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/DetalleBandaCreacion"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:justificationMode="inter_word"
+                    android:text="@{artista.birthdate}"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -105,6 +126,5 @@
         </LinearLayout>
 
     </FrameLayout>
-
 
 </layout>

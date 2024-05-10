@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DetalleArtistaViewModel(application: Application, bandaId: Int) : AndroidViewModel(application) {
+class DetalleBandaViewModel(application: Application, bandaId: Int) : AndroidViewModel(application) {
 
     private val artistaRepository = ArtistaRepository(application)
 
@@ -38,7 +38,7 @@ class DetalleArtistaViewModel(application: Application, bandaId: Int) : AndroidV
         refreshdataFromNetwork()
     }
 
-    private fun refreshdataFromNetwork() {
+    private fun refreshdataFromNetwork () {
         viewModelScope.launch(Dispatchers.Default) {
             try {
                 withContext(Dispatchers.IO) {
@@ -53,32 +53,14 @@ class DetalleArtistaViewModel(application: Application, bandaId: Int) : AndroidV
         }
     }
 
-//    init {
-//        refreshDataFromNetwork()
-//    }
-//
-//    private fun refreshDataFromNetwork() {
-//        artistaRepository.refreshData(
-//            bandaId,
-//            {
-//                _banda.postValue(it)
-//                _eventNetworkError.value = false
-//                _isNetworkErrorShown.value = false
-//            },
-//            {
-//                _eventNetworkError.value = true
-//            }
-//        )
-//    }
-
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }
     class Factory(val app: Application, val bandaId: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(DetalleArtistaViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(DetalleBandaViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return DetalleArtistaViewModel(app, bandaId) as T
+                return DetalleBandaViewModel(app, bandaId) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
