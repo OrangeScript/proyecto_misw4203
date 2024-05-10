@@ -19,7 +19,11 @@
         android:id="@+id/listaArtista"
         android:name="com.example.vinilos.ui.ListaArtista"
         android:label="fragment_lista_artista"
-        tools:layout="@layout/fragment_lista_artista" />
+        tools:layout="@layout/fragment_lista_artista" >
+        <action
+            android:id="@+id/action_listaArtista_to_detalleArtista"
+            app:destination="@id/detalleArtista" />
+    </fragment>
 
     <fragment
         android:id="@+id/listaColeccionista"
@@ -47,7 +51,11 @@
         android:id="@+id/detalleArtista"
         android:name="com.example.vinilos.ui.DetalleArtista"
         android:label="fragment_detalle_banda"
-        tools:layout="@layout/fragment_detalle_artista" />
+        tools:layout="@layout/fragment_detalle_artista" >
+    <argument
+        android:name="bandaId"
+        app:argType="integer"/>
+    </fragment>
 
 
 </navigation>

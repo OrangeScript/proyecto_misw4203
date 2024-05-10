@@ -4,10 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
 import com.example.vinilos.databinding.ItemArtistaBinding
 import com.example.vinilos.modelos.Artista
+import com.example.vinilos.ui.ListaArtistaDirections
 
 class ArtistaAdapter: RecyclerView.Adapter<ArtistaAdapter.ArtistaViewHolder>() {
 
@@ -30,6 +32,10 @@ class ArtistaAdapter: RecyclerView.Adapter<ArtistaAdapter.ArtistaViewHolder>() {
     override fun onBindViewHolder(holder: ArtistaViewHolder, position: Int) {
         holder.viewDataBinding.also {
             it.artista = artistas[position]
+        }
+        holder.viewDataBinding.root.setOnClickListener{
+            val action = ListaArtistaDirections.actionListaArtistaToDetalleArtista(artistas[position].id)
+            holder.viewDataBinding.root.findNavController().navigate(action)
         }
     }
 
