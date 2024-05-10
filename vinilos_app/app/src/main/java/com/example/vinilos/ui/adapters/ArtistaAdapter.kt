@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
 import com.example.vinilos.databinding.ItemArtistaBinding
 import com.example.vinilos.modelos.Artista
+import com.example.vinilos.modelos.Banda
+import com.example.vinilos.modelos.Musico
 import com.example.vinilos.ui.ListaArtistaDirections
 
 class ArtistaAdapter: RecyclerView.Adapter<ArtistaAdapter.ArtistaViewHolder>() {
@@ -34,8 +36,16 @@ class ArtistaAdapter: RecyclerView.Adapter<ArtistaAdapter.ArtistaViewHolder>() {
             it.artista = artistas[position]
         }
         holder.viewDataBinding.root.setOnClickListener{
-            val action = ListaArtistaDirections.actionListaArtistaToDetalleArtista(artistas[position].id)
-            holder.viewDataBinding.root.findNavController().navigate(action)
+            when (val artista = artistas[position]) {
+                is Musico -> {
+                    val action = ListaArtistaDirections.actionListaArtistaToDetalleArtista(artistas[position].id)
+                    holder.viewDataBinding.root.findNavController().navigate(action)
+                }
+                is Banda -> {
+                    val action = ListaArtistaDirections.actionListaArtistaToDetalleArtista(artistas[position].id)
+                    holder.viewDataBinding.root.findNavController().navigate(action)
+                }
+            }
         }
     }
 

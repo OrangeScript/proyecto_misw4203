@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_listaArtista_to_detalleArtista"
             app:destination="@id/detalleArtista" />
+        <action
+            android:id="@+id/action_listaArtista_to_detalleMusico"
+            app:destination="@id/detalleMusico" />
     </fragment>
 
     <fragment
@@ -55,6 +58,16 @@
     <argument
         android:name="bandaId"
         app:argType="integer"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/detalleMusico"
+        android:name="com.example.vinilos.ui.DetalleArtista"
+        android:label="fragment_detalle_musico"
+        tools:layout="@layout/fragment_detalle_musico" >
+        <argument
+            android:name="musicoId"
+            app:argType="integer"/>
     </fragment>
 
 

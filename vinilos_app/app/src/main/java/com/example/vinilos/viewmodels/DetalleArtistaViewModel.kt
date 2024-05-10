@@ -38,7 +38,7 @@ class DetalleArtistaViewModel(application: Application, bandaId: Int) : AndroidV
         refreshdataFromNetwork()
     }
 
-    private fun refreshdataFromNetwork() {
+    private fun refreshdataFromNetwork () {
         viewModelScope.launch(Dispatchers.Default) {
             try {
                 withContext(Dispatchers.IO) {
@@ -52,24 +52,6 @@ class DetalleArtistaViewModel(application: Application, bandaId: Int) : AndroidV
             }
         }
     }
-
-//    init {
-//        refreshDataFromNetwork()
-//    }
-//
-//    private fun refreshDataFromNetwork() {
-//        artistaRepository.refreshData(
-//            bandaId,
-//            {
-//                _banda.postValue(it)
-//                _eventNetworkError.value = false
-//                _isNetworkErrorShown.value = false
-//            },
-//            {
-//                _eventNetworkError.value = true
-//            }
-//        )
-//    }
 
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
