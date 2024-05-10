@@ -43,7 +43,7 @@ class DetalleBandaViewModel(application: Application, bandaId: Int) : AndroidVie
             try {
                 withContext(Dispatchers.IO) {
                     val data = artistaRepository.refreshDataBanda(bandaId)
-                    _banda.postValue(data)
+                    _banda.postValue(data as Banda?)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)

@@ -43,7 +43,7 @@ class DetalleMusicoViewModel(application: Application, musicoId: Int) : AndroidV
             try {
                 withContext(Dispatchers.IO) {
                     val data = artistaRepository.refreshDataMusico(musicoId)
-                    _musico.postValue(data)
+                    _musico.postValue(data as Musico?)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)

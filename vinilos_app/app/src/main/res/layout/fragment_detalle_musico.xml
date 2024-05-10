@@ -96,6 +96,7 @@
                     android:text="@{artista.birthdate}"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
+                    app:date="@{artista.birthdate}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
