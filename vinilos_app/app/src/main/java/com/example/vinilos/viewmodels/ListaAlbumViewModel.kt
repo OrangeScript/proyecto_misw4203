@@ -42,7 +42,7 @@ class ListaAlbumViewModel(application: Application) : AndroidViewModel(applicati
                 try {
                     withContext(Dispatchers.IO) {
                         val data = albumRepository.refreshDataAlbums()
-                        _albums.postValue(data)
+                        _albums.postValue(data!!)
                     }
                     _eventNetworkError.postValue(false)
                     _isNetworkErrorShown.postValue(false)

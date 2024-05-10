@@ -45,7 +45,7 @@ class ListaArtistaViewModel(application: Application) : AndroidViewModel(applica
                     val bandas = async { artistaRepository.refreshDataBandas() }
                     val musicos = async { artistaRepository.refreshDataMusicos() }
 
-                    val artistasCombinados = bandas.await() + musicos.await()
+                    val artistasCombinados = bandas.await()!! + musicos.await()!!
                     _artistas.postValue(artistasCombinados)
                 }
                 _eventNetworkError.postValue(false)
