@@ -52,7 +52,7 @@
 
     <fragment
         android:id="@+id/detalleArtista"
-        android:name="com.example.vinilos.ui.DetalleArtista"
+        android:name="com.example.vinilos.ui.DetalleBanda"
         android:label="fragment_detalle_banda"
         tools:layout="@layout/fragment_detalle_artista" >
     <argument
@@ -62,13 +62,12 @@
 
     <fragment
         android:id="@+id/detalleMusico"
-        android:name="com.example.vinilos.ui.DetalleArtista"
+        android:name="com.example.vinilos.ui.DetalleMusico"
         android:label="fragment_detalle_musico"
         tools:layout="@layout/fragment_detalle_musico" >
         <argument
             android:name="musicoId"
             app:argType="integer"/>
     </fragment>
-
 
 </navigation>

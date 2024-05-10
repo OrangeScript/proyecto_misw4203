@@ -37,12 +37,12 @@ class ArtistaAdapter: RecyclerView.Adapter<ArtistaAdapter.ArtistaViewHolder>() {
         }
         holder.viewDataBinding.root.setOnClickListener{
             when (val artista = artistas[position]) {
-                is Musico -> {
-                    val action = ListaArtistaDirections.actionListaArtistaToDetalleArtista(artistas[position].id)
+                is Banda -> {
+                    val action = ListaArtistaDirections.actionListaArtistaToDetalleArtista(artista.id)
                     holder.viewDataBinding.root.findNavController().navigate(action)
                 }
-                is Banda -> {
-                    val action = ListaArtistaDirections.actionListaArtistaToDetalleArtista(artistas[position].id)
+                is Musico -> {
+                    val action = ListaArtistaDirections.actionListaArtistaToDetalleMusico(artista.id)
                     holder.viewDataBinding.root.findNavController().navigate(action)
                 }
             }
