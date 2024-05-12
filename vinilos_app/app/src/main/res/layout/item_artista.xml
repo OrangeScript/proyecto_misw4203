@@ -41,7 +41,7 @@
                 app:imageUrl="@{artista.image}" />
 
             <TextView
-                android:id="@+id/coleccionistaName"
+                android:id="@+id/artistaName"
                 android:layout_width="170dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="32dp"
