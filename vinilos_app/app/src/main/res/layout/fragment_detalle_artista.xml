@@ -17,6 +17,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/BottomNavbar"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +39,7 @@
                     android:layout_marginTop="2dp"
                     android:background="@color/background"
                     android:text="@string/Atras"
+                    android:textAlignment="textStart"
                     android:textColor="@color/purple_200"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
