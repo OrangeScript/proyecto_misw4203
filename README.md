@@ -40,11 +40,12 @@ Antes de comenzar, se debe tener instalado:
 - Android Studio  
 - JDK (Java Development Kit) versión 11 o superior  
 - Kotlin versión 1.X.X (se instala automáticamente con Android Studio)  
-- Git para clonar el proyecto  
+- Git para clonar el proyecto
+- SDK para API 27 (Android 8.1 Oreo) o superior 
   
 #### Configuración del Entorno  
   
-1. **Descargar el último releas:**  
+1. **Descargar el último release:**  
   
 2. **Abrir el Proyecto en Android Studio:**  
   
