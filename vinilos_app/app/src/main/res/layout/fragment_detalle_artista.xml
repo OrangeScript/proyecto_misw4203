@@ -5,14 +5,14 @@
 
     <data>
         <variable
-            name="album"
-            type="com.example.vinilos.modelos.Album" />
+            name="artista"
+            type="com.example.vinilos.modelos.Banda" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.DetalleAlbum">
+        tools:context=".ui.DetalleBanda">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,15 +30,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginVertical="5dp"
-                android:layout_weight="1">
+                android:layout_weight="1.15">
 
                 <Button
-                    android:id="@+id/detalle_album_to_lista_album_button"
+                    android:id="@+id/detalle_banda_to_lista_banda_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:background="@color/background"
-                    android:text="@string/menu_goBack"
+                    android:text="@string/Atras"
                     android:textAlignment="textStart"
                     android:textColor="@color/purple_200"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -50,13 +50,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginVertical="5dp"
-                android:layout_weight="0.8">
+                android:layout_weight="0.7">
 
                 <ImageView
-                    android:id="@+id/DetalleAlbumFoto"
+                    android:id="@+id/detalleBandaFoto"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    app:imageUrl="@{album.cover}"
+                    app:imageUrl="@{artista.image}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -67,14 +67,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1.09">
 
                 <TextView
-                    android:id="@+id/DetalleAlbumTitulo"
+                    android:id="@+id/DetalleBandaNombre"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@{album.name}"
+                    android:text="@{artista.name}"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="34sp"
@@ -84,65 +84,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.03">
-
-                <TextView
-                    android:id="@+id/DetalleAlbumDisquera"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="@{album.recordLabel}"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.03">
-
-                <TextView
-                    android:id="@+id/DetalleAlbumGenero"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="@{album.genre}"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.03"
-                android:visibility="visible">
-
-                <TextView
-                    android:id="@+id/DetalleAlbumLanzamiento"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text=""
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp"
-                    app:date="@{album.releaseDate}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -164,19 +105,26 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/DetalleAlbumDescripcion"
+                            android:id="@+id/DetalleBandaDescripcion"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:justificationMode="inter_word"
                             android:scrollbars="vertical"
-                            android:text="@{album.description}"
+                            android:text="@{`Descripcion: ` + artista.description}"
                             android:textColor="#FFFFFF"
                             android:textSize="16sp" />
+
                     </LinearLayout>
+
                 </ScrollView>
 
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
+
     </FrameLayout>
+
+
 </layout>
