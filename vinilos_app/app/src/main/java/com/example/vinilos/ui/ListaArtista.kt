@@ -1,6 +1,5 @@
 package com.example.vinilos.ui
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,36 +10,35 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.vinilos.R
-import com.example.vinilos.databinding.FragmentListaColeccionistaBinding
-import com.example.vinilos.modelos.Coleccionista
-import com.example.vinilos.ui.adapters.ColeccionistaAdapter
-import com.example.vinilos.viewmodels.ListaColeccionistaViewModel
+import com.example.vinilos.databinding.FragmentListaArtistaBinding
+import com.example.vinilos.modelos.Artista
+import com.example.vinilos.ui.adapters.ArtistaAdapter
+import com.example.vinilos.viewmodels.ListaArtistaViewModel
 
-class ListaColeccionista : Fragment() {
+class ListaArtista : Fragment() {
 
     companion object {
-        fun newInstance() = ListaColeccionista()
+        fun newInstance() = ListaArtista()
     }
 
-    private var _binding: FragmentListaColeccionistaBinding? = null
+    private var _binding: FragmentListaArtistaBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: ListaColeccionistaViewModel
+    private lateinit var viewModel: ListaArtistaViewModel
     private lateinit var recyclerView: RecyclerView
-    private var viewModelAdapter: ColeccionistaAdapter? = null
+    private var viewModelAdapter: ArtistaAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentListaColeccionistaBinding.inflate(inflater, container, false)
+        _binding = FragmentListaArtistaBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModelAdapter = ColeccionistaAdapter()
+        viewModelAdapter = ArtistaAdapter()
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = binding.recyclerViewColeccionista
+        recyclerView = binding.recyclerViewArtistas
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
     }
@@ -55,11 +53,11 @@ class ListaColeccionista : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        viewModel = ViewModelProvider(this, ListaColeccionistaViewModel.Factory(activity.application))
-            .get(ListaColeccionistaViewModel::class.java)
-        viewModel.collectors.observe(viewLifecycleOwner, Observer<List<Coleccionista>> {
+        viewModel = ViewModelProvider(this, ListaArtistaViewModel.Factory(activity.application))
+            .get(ListaArtistaViewModel::class.java)
+        viewModel.artistas.observe(viewLifecycleOwner, Observer<List<Artista>> {
             it.apply {
-                viewModelAdapter!!.coleccionistas = this
+                viewModelAdapter!!.artistas = this
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->

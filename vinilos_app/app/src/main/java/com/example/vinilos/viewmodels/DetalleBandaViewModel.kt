@@ -7,19 +7,22 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.android.volley.TimeoutError
-import com.example.vinilos.modelos.Coleccionista
-import com.example.vinilos.repositories.ColeccionistaRepository
+import com.example.vinilos.modelos.Banda
+import com.example.vinilos.repositories.ArtistaRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ListaColeccionistaViewModel(application: Application) :  AndroidViewModel(application) {
+class DetalleBandaViewModel(application: Application, bandaId: Int) : AndroidViewModel(application) {
 
-    private val collectorsRepository = ColeccionistaRepository(application)
-    private val _collectors = MutableLiveData<List<Coleccionista>>()
-    val collectors: LiveData<List<Coleccionista>>
-        get() = _collectors
+    private val artistaRepository = ArtistaRepository(application)
+
+    private val _banda = MutableLiveData<Banda>()
+
+    val bandaId : Int = bandaId
+
+    val banda: LiveData<Banda>
+        get() = _banda
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -32,19 +35,19 @@ class ListaColeccionistaViewModel(application: Application) :  AndroidViewModel(
         get() = _isNetworkErrorShown
 
     init {
-        refreshDataFromNetwork()
+        refreshdataFromNetwork()
     }
 
-    private fun refreshDataFromNetwork() {
+    private fun refreshdataFromNetwork () {
         viewModelScope.launch(Dispatchers.Default) {
             try {
                 withContext(Dispatchers.IO) {
-                    val data = collectorsRepository.refreshDataCollectors()
-                    _collectors.postValue(data!!)
+                    val data = artistaRepository.refreshDataBanda(bandaId)
+                    _banda.postValue(data as Banda?)
                 }
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
-            } catch (e: TimeoutError) {
+            } catch (e: Exception) {
                 _eventNetworkError.postValue(true)
             }
         }
@@ -53,12 +56,11 @@ class ListaColeccionistaViewModel(application: Application) :  AndroidViewModel(
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }
-
-    class Factory(val app: Application) : ViewModelProvider.Factory {
+    class Factory(val app: Application, val bandaId: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(ListaColeccionistaViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(DetalleBandaViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return ListaColeccionistaViewModel(app) as T
+                return DetalleBandaViewModel(app, bandaId) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

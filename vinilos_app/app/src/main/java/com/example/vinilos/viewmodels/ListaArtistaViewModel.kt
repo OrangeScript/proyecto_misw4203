@@ -8,20 +8,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.android.volley.TimeoutError
-import com.example.vinilos.modelos.Album
-import com.example.vinilos.repositories.AlbumRepository
+import com.example.vinilos.modelos.Artista
+import com.example.vinilos.repositories.ArtistaRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ListaAlbumViewModel(application: Application) : AndroidViewModel(application) {
+class ListaArtistaViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val albumRepository = AlbumRepository(application)
+    private val artistaRepository = ArtistaRepository(application)
 
-    private val _albums = MutableLiveData<List<Album>>()
+    private val _artistas = MutableLiveData<List<Artista>>()
 
-    val albums: LiveData<List<Album>>
-        get() = _albums
+    val artistas: LiveData<List<Artista>>
+        get() = _artistas
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -38,18 +39,22 @@ class ListaAlbumViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     private fun refreshDataFromNetwork() {
-            viewModelScope.launch(Dispatchers.Default) {
-                try {
-                    withContext(Dispatchers.IO) {
-                        val data = albumRepository.refreshDataAlbums()
-                        _albums.postValue(data!!)
-                    }
-                    _eventNetworkError.postValue(false)
-                    _isNetworkErrorShown.postValue(false)
-                } catch (e: TimeoutError) {
-                    _eventNetworkError.postValue(true)
+        viewModelScope.launch(Dispatchers.Default) {
+            try {
+                withContext(Dispatchers.IO) {
+                    val bandas = async { artistaRepository.refreshDataBandas() }
+                    val musicos = async { artistaRepository.refreshDataMusicos() }
+
+                    val artistasCombinados = bandas.await()!! + musicos.await()!!
+                    _artistas.postValue(artistasCombinados)
                 }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            } catch (e: TimeoutError) {
+                _eventNetworkError.postValue(true)
             }
+        }
+
     }
 
     fun onNetworkErrorShown() {
@@ -58,9 +63,9 @@ class ListaAlbumViewModel(application: Application) : AndroidViewModel(applicati
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(ListaAlbumViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(ListaArtistaViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return ListaAlbumViewModel(app) as T
+                return ListaArtistaViewModel(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
