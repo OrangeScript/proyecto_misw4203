@@ -1,7 +1,6 @@
 package com.example.vinilos;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 import androidx.test.espresso.ViewInteraction;
@@ -9,10 +8,14 @@ import androidx.test.filters.LargeTest;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.example.vinilos.ui.MainActivity;
-import static org.hamcrest.Matchers.allOf;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import static org.hamcrest.core.AllOf.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)

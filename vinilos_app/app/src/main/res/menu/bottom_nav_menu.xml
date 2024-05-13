@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/listaAlbum"
+        android:id="@+id/fragment_lista_album"
         android:icon="@drawable/album"
         android:title="@string/menu_albums" />
 
     <item
-        android:id="@+id/listaArtista"
+        android:id="@+id/fragment_lista_artista"
         android:icon="@drawable/artist"
         android:title="@string/menu_artists" />
 
     <item
-        android:id="@+id/listaColeccionista"
+        android:id="@+id/fragment_lista_coleccionita"
         android:icon="@drawable/library"
         android:title="@string/menu_collectors" />
 
     <item
-        android:id="@+id/opciones"
+        android:id="@+id/fragment_opciones"
         android:icon="@drawable/add_square"
         android:title="@string/menu_options" />
 

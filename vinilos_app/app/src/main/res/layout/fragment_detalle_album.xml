@@ -17,9 +17,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/BottomNavbar"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +36,6 @@
                     android:layout_marginTop="2dp"
                     android:background="@color/background"
                     android:text="@string/menu_goBack"
-                    android:textAlignment="textStart"
                     android:textColor="@color/purple_200"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -88,12 +84,13 @@
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.03">
+                android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/DetalleAlbumDisquera"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:text="@{album.recordLabel}"
                     android:textColor="#FFFFFF"
@@ -107,12 +104,13 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.03">
+                android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/DetalleAlbumGenero"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:text="@{album.genre}"
                     android:textColor="#FFFFFF"
@@ -126,22 +124,23 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.03"
+                android:layout_weight="1"
                 android:visibility="visible">
 
                 <TextView
                     android:id="@+id/DetalleAlbumLanzamiento"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:text=""
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
-                    app:date="@{album.releaseDate}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:date="@{album.releaseDate}"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -150,32 +149,19 @@
                 android:layout_weight="0.8"
                 android:visibility="visible">
 
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <TextView
+                    android:id="@+id/DetalleAlbumDescripcion"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="@{album.description}"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/DetalleAlbumDescripcion"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:justificationMode="inter_word"
-                            android:scrollbars="vertical"
-                            android:text="@{album.description}"
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-                </ScrollView>
-
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </FrameLayout>

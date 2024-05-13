@@ -22,38 +22,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+//        replaceFragment(ListaAlbum())
 
+        val navBar = findViewById<NavigationBarView>(R.id.nav_view)
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragment_activity_main) as NavHostFragment
+
         navController = navHostFragment.navController
-
-        binding.navView.setupWithNavController(navController)
-
-        binding.navView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.listaAlbum -> {
-                    navController.navigate(R.id.listaAlbum)
-                    true
-                }
-                R.id.listaArtista -> {
-                    navController.navigate(R.id.listaArtista)
-                    true
-                }
-                R.id.listaColeccionista -> {
-                    navController.navigate(R.id.listaColeccionista)
-                    true
-                }
-                R.id.opciones -> {
-                    navController.navigate(R.id.opciones)
-                    true
-                }
-                else -> false
-            }
-        }
+        findViewById<BottomNavigationView>(R.id.nav_view)
+            .setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.fragment_activity_main).navigateUp() ||
-                super.onSupportNavigateUp()
+        val navController = findNavController(R.id.fragment_activity_main)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

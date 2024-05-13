@@ -1,30 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ListaArtista">
 
-    <data>
-        <variable
-            name="artista"
-            type="com.example.vinilos.modelos.Artista" />
-    </data>
-
-    <RelativeLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/Vinilos"
-        tools:context="ui.ListaArtista">
+        android:text="Hello" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewArtistas"
-            tools:listitem="@layout/item_artista"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </RelativeLayout>
-
-</layout>
+</FrameLayout>

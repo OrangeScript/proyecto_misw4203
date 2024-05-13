@@ -1,27 +1,25 @@
 package com.example.vinilos.network
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
+import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.modelos.Album
-import com.example.vinilos.modelos.Coleccionista
-import com.example.vinilos.modelos.Artista
-import com.example.vinilos.modelos.Musico
 import com.example.vinilos.modelos.Banda
+import com.example.vinilos.modelos.Coleccionista
+import com.example.vinilos.modelos.Musico
 import org.json.JSONArray
 import org.json.JSONObject
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
 
     companion object{
-        const val BASE_URL= "http://35.202.221.176:3000/"
+        const val BASE_URL= "http://34.68.122.27:3000/"
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
@@ -45,153 +43,139 @@ class NetworkServiceAdapter constructor(context: Context) {
         return  JsonObjectRequest(Request.Method.PUT, BASE_URL +path, body, responseListener, errorListener)
     }
 
-    suspend fun getAlbums() = suspendCoroutine<List<Album>> { cont ->
+    fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("albums",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Album>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
-                    val album = Album(
-                        id = item.getInt("id"),
-                        name = item.getString("name"),
-                        cover = item.getString("cover"),
-                        releaseDate = item.getString("releaseDate"),
-                        genre = item.getString("genre"),
-                        description = item.getString("description"),
-                        recordLabel = item.getString("recordLabel")
-                    )
-                    list.add(i, album)
+                    list.add(i,
+                        Album(id = item.getInt("id"),
+                            name = item.getString("name"),
+                            cover = item.getString("cover"),
+                            releaseDate = item.getString("releaseDate"),
+                            genre = item.getString("genre"),
+                            description = item.getString("description"),
+                            recordLabel = item.getString("recordLabel")))
                 }
-                cont.resume(list)
+                onComplete(list)
             },
             Response.ErrorListener {
-                cont.resumeWithException(it)
+                onError(it)
             }))
     }
 
-    suspend fun getAlbum(albumId: Int) = suspendCoroutine { cont ->
+    fun getAlbum(albumId: Int, onComplete:(resp:Album)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("albums/$albumId",
-            Response.Listener { response ->
+            { response ->
                 val resp = JSONObject(response)
-                val album = Album(
-                    id = resp.getInt("id"),
+                var objectResp = Album(id = resp.getInt("id"),
                     name = resp.getString("name"),
                     cover = resp.getString("cover"),
                     releaseDate = resp.getString("releaseDate"),
                     genre = resp.getString("genre"),
                     description = resp.getString("description"),
-                    recordLabel = resp.getString("recordLabel")
-                )
-                cont.resume(album)
+                    recordLabel = resp.getString("recordLabel"))
+                onComplete(objectResp)
             },
-            Response.ErrorListener {
-                cont.resumeWithException(it)
+            {
+                onError(it)
             }))
     }
 
-    suspend fun getBandas() = suspendCoroutine<List<Artista>> { cont ->
+    fun getBandas(onComplete:(resp:List<Banda>)->Unit, onError: (error:VolleyError)->Unit) {
         requestQueue.add(getRequest("bands",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
-                val list = mutableListOf<Artista>()
+                val list = mutableListOf<Banda>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
-                    val banda = Banda(
-                        id = item.getInt("id"),
-                        name = item.getString("name"),
-                        image = item.getString("image"),
-                        description = item.getString("description"),
-                        creationdate = item.getString("creationDate")
-                    )
-                    list.add(i, banda)
+                    list.add(
+                        i,
+                        Banda(
+                            id = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            description = item.getString("description"),
+                            creationdate = item.getString("creationDate")))
                 }
-                cont.resume(list)
+                onComplete(list)
             },
             Response.ErrorListener {
-                cont.resumeWithException(it)
+                onError(it)
             }))
     }
 
-    suspend fun getBanda(bandaId: Int) = suspendCoroutine { cont ->
-        requestQueue.add(getRequest("bands/$bandaId",
-            Response.Listener { response ->
+    fun getBanda(BandaId: String, onComplete:(resp:JSONObject)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$BandaId",
+            Response.Listener<String> { response ->
                 val resp = JSONObject(response)
-                val banda = Banda(
-                    id = resp.getInt("id"),
-                    name = resp.getString("name"),
-                    image = resp.getString("image"),
-                    description = resp.getString("description"),
-                    creationdate = resp.getString("creationDate")
-                )
-                cont.resume(banda)
+                onComplete(resp)
             },
             Response.ErrorListener {
-                cont.resumeWithException(it)
+                onError(it)
             }))
     }
 
-    suspend fun getMusicos() = suspendCoroutine<List<Artista>> { cont ->
-        requestQueue.add(getRequest("musicians",
+    fun getMusicos(onComplete:(resp:List<Musico>)->Unit, onError: (error:VolleyError)->Unit) {
+        requestQueue.add(getRequest("bands",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
-                val list = mutableListOf<Artista>()
+                val list = mutableListOf<Musico>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
-                    val musico = Musico(
-                        id = item.getInt("id"),
-                        name = item.getString("name"),
-                        image = item.getString("image"),
-                        description = item.getString("description"),
-                        birthdate = item.getString("birthDate")
-                    )
-                    list.add(i, musico)
+                    list.add(
+                        i,
+                        Musico(
+                            id = item.getInt("id"),
+                            name = item.getString("name"),
+                            image = item.getString("image"),
+                            description = item.getString("description"),
+                            birthdate = item.getString("birthDate")))
                 }
-                cont.resume(list)
+                onComplete(list)
             },
             Response.ErrorListener {
-                cont.resumeWithException(it)
+                onError(it)
             }))
     }
 
-    suspend fun getMusico(musicoId: Int) = suspendCoroutine { cont ->
-        requestQueue.add(getRequest("musicians/$musicoId",
-            Response.Listener { response ->
+    fun getMusico(MusicoId: String, onComplete:(resp:JSONObject)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$MusicoId",
+            Response.Listener<String> { response ->
                 val resp = JSONObject(response)
-                val musico = Musico(
-                    id = resp.getInt("id"),
-                    name = resp.getString("name"),
-                    image = resp.getString("image"),
-                    description = resp.getString("description"),
-                    birthdate = resp.getString("birthDate")
-                )
-                cont.resume(musico)
+                onComplete(resp)
             },
             Response.ErrorListener {
-                cont.resumeWithException(it)
+                onError(it)
             }))
+
     }
 
-    suspend fun getColeccionistas() = suspendCoroutine<List<Coleccionista>> { cont ->
+    fun getColeccionistas(onComplete:(resp:List<Coleccionista>)->Unit, onError: (error:VolleyError)->Unit) {
         requestQueue.add(getRequest("collectors",
             Response.Listener<String> { response ->
+                Log.d("tagb", response)
                 val resp = JSONArray(response)
                 val list = mutableListOf<Coleccionista>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
-                    val coleccionista = Coleccionista(
-                        id = item.getInt("id"),
-                        name = item.getString("name"),
-                        telephone = item.getString("telephone"),
-                        email = item.getString("email")
-                    )
-                    list.add(i, coleccionista)
+                    list.add(
+                        i,
+                        Coleccionista(
+                            id = item.getInt("id"),
+                            name = item.getString("name"),
+                            telephone = item.getString("telephone"),
+                            email = item.getString("email")))
                 }
-                cont.resume(list)
+                onComplete(list)
             },
             Response.ErrorListener {
-                cont.resumeWithException(it)
+                onError(it)
+                Log.d("", it.message.toString())
             }))
     }
+
 
 }
