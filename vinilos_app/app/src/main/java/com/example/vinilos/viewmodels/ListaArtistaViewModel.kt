@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.android.volley.TimeoutError
 import com.example.vinilos.modelos.Artista
 import com.example.vinilos.repositories.ArtistaRepository
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -39,7 +40,7 @@ class ListaArtistaViewModel(application: Application) : AndroidViewModel(applica
     }
 
     private fun refreshDataFromNetwork() {
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 withContext(Dispatchers.IO) {
                     val bandas = async { artistaRepository.refreshDataBandas() }
@@ -51,6 +52,8 @@ class ListaArtistaViewModel(application: Application) : AndroidViewModel(applica
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
             } catch (e: TimeoutError) {
+                _eventNetworkError.postValue(true)
+            } catch (e: Exception) {
                 _eventNetworkError.postValue(true)
             }
         }

@@ -39,12 +39,10 @@ class DetalleMusicoViewModel(application: Application, musicoId: Int) : AndroidV
     }
 
     private fun refreshdataFromNetwork() {
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
-                withContext(Dispatchers.IO) {
-                    val data = artistaRepository.refreshDataMusico(musicoId)
-                    _musico.postValue(data as Musico?)
-                }
+                val data = artistaRepository.refreshDataMusico(musicoId)
+                _musico.postValue(data as Musico?)
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
             } catch (e: Exception) {

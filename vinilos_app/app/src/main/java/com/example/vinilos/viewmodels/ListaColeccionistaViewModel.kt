@@ -36,15 +36,15 @@ class ListaColeccionistaViewModel(application: Application) :  AndroidViewModel(
     }
 
     private fun refreshDataFromNetwork() {
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
-                withContext(Dispatchers.IO) {
-                    val data = collectorsRepository.refreshDataCollectors()
-                    _collectors.postValue(data!!)
-                }
+                val data = collectorsRepository.refreshDataCollectors()
+                _collectors.postValue(data!!)
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
             } catch (e: TimeoutError) {
+                _eventNetworkError.postValue(true)
+            } catch (e: Exception) {
                 _eventNetworkError.postValue(true)
             }
         }
