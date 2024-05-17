@@ -6,4 +6,10 @@
     <string name="menu_options">Opciones</string>
     <string name="menu_goBack">Atras</string>
     <string name="Atras">Atras</string>
+    <string name="detalle_album_content_description"> Imagen de portada del álbum</string>
+    <string name="detalle_banda_content_description"> Imagen de la banda</string>
+    <string name="detalle_musico_content_description"> Imagen del músico</string>
+    <string name="lista_album_content_description"> Imagen de portada de álbum</string>
+    <string name="lista_artista_content_description"> Imagen del artista</string>
+    <string name="lista_coleccionista_content_description"> Imagen del coleccionista</string>
 </resources>
