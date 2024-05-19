@@ -12,4 +12,9 @@
     <string name="lista_album_content_description"> Imagen de portada de álbum</string>
     <string name="lista_artista_content_description"> Imagen del artista</string>
     <string name="lista_coleccionista_content_description"> Imagen del coleccionista</string>
+    <string name="opciones_crear_album_label">Crear álbum</string>
+    <string name="opciones_crear_album_description">Icono de opción para crear álbum</string>
+    <string name="opciones_asociar_track_label">Asociar tracks a álbum</string>
+    <string name="opciones_asociar_track_description">Icono de opción para asociar track a un álbum</string>
+    <string name="opciones_titulo_description">Título de menú: Opciones</string>
 </resources>

@@ -61,14 +61,6 @@
         tools:layout_editor_absoluteX="14dp"
         tools:layout_editor_absoluteY="497dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="148dp" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="409dp"
         android:layout_height="wrap_content"
@@ -106,7 +98,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView200"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
