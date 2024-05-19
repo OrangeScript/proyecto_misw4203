@@ -98,12 +98,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView200"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         tools:layout_editor_absoluteX="14dp"
         tools:layout_editor_absoluteY="235dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="14dp"
+        tools:layout_editor_absoluteY="138dp" />
 
     <Button
         android:id="@+id/button2"
