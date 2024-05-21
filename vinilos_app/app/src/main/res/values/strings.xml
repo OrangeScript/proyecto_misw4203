@@ -17,4 +17,6 @@
     <string name="opciones_asociar_track_label">Asociar tracks a álbum</string>
     <string name="opciones_asociar_track_description">Icono de opción para asociar track a un álbum</string>
     <string name="opciones_titulo_description">Título de menú: Opciones</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
