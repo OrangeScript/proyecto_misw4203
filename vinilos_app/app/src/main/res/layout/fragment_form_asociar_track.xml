@@ -5,34 +5,34 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tituloRelacionalTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/tituloAsociarTrack"
         tools:layout_editor_absoluteX="183dp"
         tools:layout_editor_absoluteY="29dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/atrasRelacionalTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/Atras"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="48dp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/guardarRelacionalTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/guardarCrearAlbum"
         tools:layout_editor_absoluteX="307dp"
         tools:layout_editor_absoluteY="48dp" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/albumRelacionalTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/albumAsociarTrack"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="127dp" />
 
@@ -45,14 +45,14 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="hint" />
+            android:hint="@string/hintNombreCrearAlbum" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/trackRelacionalTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/trackAsociarAlbum"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="222dp" />
 
@@ -65,6 +65,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="hint" />
+            android:hint="@string/hintTrackAsociarAlbum" />
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
