@@ -76,6 +76,5 @@ class DetalleAlbum : Fragment() {
 
     fun goFromAlbumDetailToList(view: View) {
         view.findNavController().popBackStack()
-        //navController.navigate(R.id.fragment_lista_album)
     }
 }
