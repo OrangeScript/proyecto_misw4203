@@ -22,13 +22,13 @@
     <string name="nombreCrearAlbum">Nombre</string>
     <string name="imagenCrearAlbum">Imagen de portada</string>
     <string name="descripcionCrearAlbum">Descripcion</string>
-    <string name="generoCrearAlbum">Genero</string>
+    <string name="generoCrearAlbum">Género</string>
     <string name="disqueraCrearAlbum">Disquera</string>
-    <string name="hintNombreCrearAlbum">Album 1</string>
-    <string name="hintImagenCrearAlbum">https://www.google.com/search?q=imagen</string>
-    <string name="hintDescripcionCrearAlbum">Lorem ipsum dolor sit amet</string>
-    <string name="hintGeneroCrearAlbum">Genero 1</string>
-    <string name="hintDisqueraCrearAlbum">Disquera 1</string>
+    <string name="hintNombreCrearAlbum">Introduce el nombre del álbum</string>
+    <string name="hintImagenCrearAlbum">Escribe un enlace. ej: https://www.google.com/search?q=imagen</string>
+    <string name="hintDescripcionCrearAlbum">Escribe una descripción del álbum</string>
+    <string name="hintGeneroCrearAlbum">Introduce el género músical del álbum</string>
+    <string name="hintDisqueraCrearAlbum">Escribe la disquera que publicó el álbum</string>
     <string name="tituloAsociarTrack">Asociar Track con album</string>
     <string name="albumAsociarTrack">Album</string>
     <string name="trackAsociarAlbum">Track</string>
