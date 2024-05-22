@@ -3,19 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp">
 
     <TextView
         android:id="@+id/tituloRelacionalTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:minHeight="35dp"
         android:text="@string/tituloAsociarTrack"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,75 +25,87 @@
         android:id="@+id/atrasRelacionalTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
         android:text="@string/Atras"
-        android:background="@color/background"
         android:textColor="@color/purple_200"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tituloRelacionalTrack" />
 
     <Button
         android:id="@+id/guardarRelacionalTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="304dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
         android:text="@string/guardarCrearAlbum"
-        android:background="@color/background"
         android:textColor="@color/purple_200"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloRelacionalTrack" />
 
     <TextView
         android:id="@+id/albumRelacionalTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
         android:text="@string/albumAsociarTrack"
         android:textColor="#FFFFFF"
-        android:textSize="15sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/atrasRelacionalTrack" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="376dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="164dp"
+        android:id="@+id/inputAlbumRelacionalAlbum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/albumRelacionalTrack">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hintNombreCrearAlbum" />
+            android:hint="@string/hintNombreCrearAlbum"
+            android:minHeight="48dip"
+            android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/trackRelacionalTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="24dp"
         android:text="@string/trackAsociarAlbum"
         android:textColor="#FFFFFF"
-        android:textSize="15sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/inputAlbumRelacionalAlbum" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="376dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="256dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/trackRelacionalTrack">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputAlbumRelacionalTrack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hintTrackAsociarAlbum" />
+            android:hint="@string/hintTrackAsociarAlbum"
+            android:minHeight="48dip"
+            android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
