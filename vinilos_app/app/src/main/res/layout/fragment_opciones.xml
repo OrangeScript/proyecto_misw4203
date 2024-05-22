@@ -88,7 +88,7 @@
                 android:id="@+id/opciones_asociar_track_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:contentDescription="@string/opciones_asociar_track_description"
                 android:minWidth="30dp"
                 android:minHeight="30dp"
