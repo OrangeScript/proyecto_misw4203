@@ -1,13 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.Opciones.Opciones">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        tools:context=".ui.Opciones.Opciones">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp">
+
+            <TextView
+                android:id="@+id/opciones_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:contentDescription="@string/opciones_titulo_description"
+                android:text="@string/menu_options"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/opciones_crear_album_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/opciones_crear_album_label"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/opciones_crear_album_icon"
+                app:layout_constraintStart_toEndOf="@+id/opciones_crear_album_icon"
+                app:layout_constraintTop_toTopOf="@+id/opciones_crear_album_icon" />
+
+            <ImageView
+                android:id="@+id/opciones_crear_album_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:contentDescription="@string/opciones_crear_album_description"
+                android:minWidth="30dp"
+                android:minHeight="30dp"
+                android:src="@drawable/add_circle_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/opciones_title" />
+
+            <Button
+                android:id="@+id/opciones_crear_album_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="@string/opciones_crear_album_label"
+                android:textColor="@android:color/transparent"
+                app:layout_constrainedWidth="false"
+                app:layout_constraintBottom_toBottomOf="@+id/opciones_crear_album_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/opciones_crear_album_label"
+                app:layout_constraintWidth="match_parent" />
+
+            <TextView
+                android:id="@+id/opciones_asociar_track_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/opciones_asociar_track_label"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/opciones_asociar_track_icon"
+                app:layout_constraintStart_toEndOf="@+id/opciones_asociar_track_icon"
+                app:layout_constraintTop_toTopOf="@+id/opciones_asociar_track_icon" />
+
+            <ImageView
+                android:id="@+id/opciones_asociar_track_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:contentDescription="@string/opciones_asociar_track_description"
+                android:minWidth="30dp"
+                android:minHeight="30dp"
+                android:src="@drawable/playlist_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/opciones_crear_album_icon" />
+
+            <Button
+                android:id="@+id/opciones_asociar_track_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="@string/opciones_asociar_track_label"
+                android:textColor="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="@+id/opciones_asociar_track_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/opciones_asociar_track_icon"
+                app:layout_constraintWidth="match_parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>
