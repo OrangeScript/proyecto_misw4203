@@ -12,4 +12,26 @@
     <string name="lista_album_content_description"> Imagen de portada de álbum</string>
     <string name="lista_artista_content_description"> Imagen del artista</string>
     <string name="lista_coleccionista_content_description"> Imagen del coleccionista</string>
+    <string name="opciones_crear_album_label">Crear álbum</string>
+    <string name="opciones_crear_album_description">Icono de opción para crear álbum</string>
+    <string name="opciones_asociar_track_label">Asociar tracks a álbum</string>
+    <string name="opciones_asociar_track_description">Icono de opción para asociar track a un álbum</string>
+    <string name="opciones_titulo_description">Título de menú: Opciones</string>
+    <string name="TituloCrearAlbum">Crear album</string>
+    <string name="guardarCrearAlbum">Guardar</string>
+    <string name="nombreCrearAlbum">Nombre</string>
+    <string name="imagenCrearAlbum">Imagen de portada</string>
+    <string name="descripcionCrearAlbum">Descripcion</string>
+    <string name="generoCrearAlbum">Genero</string>
+    <string name="disqueraCrearAlbum">Disquera</string>
+    <string name="hintNombreCrearAlbum">Album 1</string>
+    <string name="hintImagenCrearAlbum">https://www.google.com/search?q=imagen</string>
+    <string name="hintDescripcionCrearAlbum">Lorem ipsum dolor sit amet</string>
+    <string name="hintGeneroCrearAlbum">Genero 1</string>
+    <string name="hintDisqueraCrearAlbum">Disquera 1</string>
+    <string name="tituloAsociarTrack">Asociar Track con album</string>
+    <string name="albumAsociarTrack">Album</string>
+    <string name="trackAsociarAlbum">Track</string>
+    <string name="hintTrackAsociarAlbum">Track 1</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
