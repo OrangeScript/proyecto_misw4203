@@ -22,7 +22,7 @@
                 android:id="@+id/opciones_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:contentDescription="@string/opciones_titulo_description"
                 android:text="@string/menu_options"
                 android:textColor="@color/white"
