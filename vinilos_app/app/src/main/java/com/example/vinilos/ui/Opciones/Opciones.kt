@@ -31,22 +31,13 @@ class Opciones : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val createAlbumButton: Button = view.findViewById(R.id.opciones_crear_album_btn)
-//        val bindTrackButton: Button = view.findViewById(R.id.opciones_asociar_track_btn)
 
         createAlbumButton.setOnClickListener{
             navigateToCreateAlbumForm(view)
         }
-
-//        bindTrackButton.setOnClickListener{
-//            navigateToBindTrackForm(view)
-//        }
     }
 
     fun navigateToCreateAlbumForm(view: View) {
         view.findNavController().navigate(OpcionesDirections.actionOpcionesToFormCrearAlbum())
     }
-
-//    fun navigateToBindTrackForm(view: View) {
-//        view.findNavController().navigate(OpcionesDirections.actionOpcionesToFormAsociarTrack())
-//    }
 }

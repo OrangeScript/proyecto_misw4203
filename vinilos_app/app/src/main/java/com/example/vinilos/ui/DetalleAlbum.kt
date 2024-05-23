@@ -69,15 +69,15 @@ class DetalleAlbum : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val goBackButton: Button = view.findViewById(R.id.detalle_album_to_lista_album_button)
-//        val asociarTrackButton: Button = view.findViewById(R.id.album_asociar_track_button)
+        val asociarTrackButton: Button = view.findViewById(R.id.album_asociar_track_button)
 
         goBackButton.setOnClickListener{
             goFromAlbumDetailToList(view)
         }
 
-//        asociarTrackButton.setOnClickListener{
-//            goFromAlbumToAsociarTrack(view)
-//        }
+        asociarTrackButton.setOnClickListener{
+            goFromAlbumToAsociarTrack(view)
+        }
     }
 
     fun goFromAlbumDetailToList(view: View) {

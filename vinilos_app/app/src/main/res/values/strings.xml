@@ -37,4 +37,5 @@
     <string name="DetalleAlbumDisqueraLabel">Disquera:</string>
     <string name="DetalleAlbumGeneroLabel">Género:</string>
     <string name="DetalleAlbumLanzamientoLabel">Lanzamiento:</string>
+    <string name="DetalleAlbumAsociarTrack">Asociar Track</string>
 </resources>
