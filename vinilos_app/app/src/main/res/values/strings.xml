@@ -33,4 +33,8 @@
     <string name="albumAsociarTrack">Álbum</string>
     <string name="trackAsociarAlbum">Track</string>
     <string name="hintTrackAsociarAlbum">Escribe el título de la canción</string>
+    <string name="DetalleAlbumTituloLabel">Título:</string>
+    <string name="DetalleAlbumDisqueraLabel">Disquera:</string>
+    <string name="DetalleAlbumGeneroLabel">Género:</string>
+    <string name="DetalleAlbumLanzamientoLabel">Lanzamiento:</string>
 </resources>
