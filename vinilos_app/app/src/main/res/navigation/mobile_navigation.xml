@@ -55,6 +55,9 @@
         <argument
             android:name="albumId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_detalleAlbum_to_formAsociarTrack"
+            app:destination="@id/formAsociarTrack" />
     </fragment>
 
     <fragment
@@ -87,6 +90,10 @@
         android:id="@+id/formAsociarTrack"
         android:name="com.example.vinilos.ui.FormAsociarTrack"
         android:label="FormAsociarTrack"
-        tools:layout="@layout/fragment_form_asociar_track"/>
+        tools:layout="@layout/fragment_form_asociar_track" >
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>
