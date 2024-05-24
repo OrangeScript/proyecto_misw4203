@@ -26,6 +26,12 @@ class AlbumRepository (val application: Application){
         }
     }
 
+    suspend fun updateDataAlbumsFromNetwork(): List<Album>? {
+        val albums = networkServiceAdapter.getAlbums()
+        CacheManager.getInstance(application.applicationContext).addAlbums(albums)
+        return albums
+    }
+
     suspend fun refreshDataAlbum(id: Int): Album {
         val potentialResp = cacheManager.getAlbumDetails(id)
         if (potentialResp == null) {
@@ -42,6 +48,10 @@ class AlbumRepository (val application: Application){
 
     suspend fun refreshDataTracksAsociados(albumId: Int, body: JSONObject) {
         networkServiceAdapter.postAsociarTrack(albumId, body)
+    }
+
+    suspend fun createAlbum(body: JSONObject) {
+        networkServiceAdapter.postCrearAlbum(body)
     }
 
 }

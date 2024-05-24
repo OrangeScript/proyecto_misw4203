@@ -214,14 +214,12 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
     suspend fun postCrearAlbum(
-        body: JSONObject,
-        onComplete:(resp:JSONObject)->Unit,
-        onError: (error: VolleyError)->Unit) = suspendCoroutine { cont ->
+        body: JSONObject) = suspendCoroutine { cont ->
             requestQueue.add(postRequest(
                 "albums",
                 body,
                 Response.Listener { response ->
-                    onComplete(response)
+                    cont.resume(response)
                 },
                 Response.ErrorListener {
                     cont.resumeWithException(it)

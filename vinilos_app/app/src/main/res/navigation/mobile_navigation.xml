@@ -42,9 +42,6 @@
         <action
             android:id="@+id/action_opciones_to_formCrearAlbum"
             app:destination="@id/formCrearAlbum" />
-        <action
-            android:id="@+id/action_opciones_to_formAsociarTrack"
-            app:destination="@id/formAsociarTrack" />
     </fragment>
 
     <fragment
