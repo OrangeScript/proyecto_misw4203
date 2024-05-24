@@ -44,4 +44,8 @@ class AlbumRepository (val application: Application){
         networkServiceAdapter.postAsociarTrack(albumId, body)
     }
 
+    suspend fun createAlbum(body: JSONObject) {
+        networkServiceAdapter.postCrearAlbum(body)
+    }
+
 }

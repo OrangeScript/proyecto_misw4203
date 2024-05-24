@@ -121,7 +121,7 @@ class FormAsociarTrack : Fragment() {
             if (validateAllInputs()) {
                 saveInputData()
             } else {
-                Toast.makeText(activity, "Por favor, completa los campos correctamente", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Por favor, completa todos los campos correctamente", Toast.LENGTH_LONG).show()
             }
         }
     }

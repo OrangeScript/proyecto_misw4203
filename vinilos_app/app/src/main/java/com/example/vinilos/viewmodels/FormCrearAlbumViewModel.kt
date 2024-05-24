@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
-class FormAsociarTrackViewModel(application: Application, private val albumId: Int) : AndroidViewModel(application) {
+class FormCrearAlbumViewModel(application: Application): AndroidViewModel(application){
 
     private val albumRepository = AlbumRepository(application)
 
@@ -30,15 +30,24 @@ class FormAsociarTrackViewModel(application: Application, private val albumId: I
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    private fun postTrackToAlbum(albumId: Int, trackName: String, trackDuration: String) {
-        val trackData = JSONObject().apply {
-            put("name", trackName)
-            put("duration", trackDuration)
+    private fun postCreateAlbum(albumName: String,
+                                albumCover: String,
+                                albumReleaseDate: String,
+                                albumGenre: String,
+                                albumRecordLabel: String,
+                                albumDescription: String) {
+        val albumData = JSONObject().apply {
+            put("name", albumName)
+            put("cover", albumCover)
+            put("releaseDate", albumReleaseDate)
+            put("description", albumDescription)
+            put("genre", albumGenre)
+            put("recordLabel", albumRecordLabel)
         }
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = albumRepository.refreshDataTracksAsociados(albumId, trackData)
+                val response = albumRepository.createAlbum(albumData)
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
                 _saveSuccess.postValue(true)
@@ -52,21 +61,22 @@ class FormAsociarTrackViewModel(application: Application, private val albumId: I
         _isNetworkErrorShown.value = true
     }
 
-    fun onSavedTrackHandled() {
+    fun onSavedAlbumcHandled() {
         _saveSuccess.value = false
     }
 
-    fun getTrackData(trackName: String, trackDuration: String) {
-        postTrackToAlbum(albumId, trackName, trackDuration)
+    fun getAlbumData(albumName: String, albumCover: String, albumReleaseDate: String, albumGenre: String, albumRecordLabel: String, albumDescription: String) {
+        postCreateAlbum(albumName, albumCover, albumReleaseDate, albumGenre, albumRecordLabel, albumDescription)
     }
 
-    class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
+    class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(FormAsociarTrackViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(FormCrearAlbumViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return FormAsociarTrackViewModel(app, albumId) as T
+                return FormCrearAlbumViewModel(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
     }
+
 }
