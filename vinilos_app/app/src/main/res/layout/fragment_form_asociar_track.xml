@@ -46,12 +46,12 @@
         app:layout_constraintTop_toBottomOf="@+id/tituloRelacionalTrack" />
 
     <TextView
-        android:id="@+id/albumRelacionalTrack"
+        android:id="@+id/nombreTrackTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
-        android:text="@string/albumAsociarTrack"
+        android:text="@string/nombreAsociarTrackAlbum"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/atrasRelacionalTrack" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputAlbumRelacionalAlbum"
+        android:id="@+id/inputNombreTrackLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -67,30 +67,32 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/albumRelacionalTrack">
+        app:layout_constraintTop_toBottomOf="@+id/nombreTrackTitulo">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputNombreTrack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hintNombreCrearAlbum"
+            android:hint="@string/hintTrackAsociarAlbum"
             android:minHeight="48dip"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/trackRelacionalTrack"
+        android:id="@+id/duracionTrackTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="24dp"
-        android:text="@string/trackAsociarAlbum"
+        android:text="@string/duracionTrackAsociarAlbum"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputAlbumRelacionalAlbum" />
+        app:layout_constraintTop_toBottomOf="@+id/inputNombreTrackLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputDuracionTrackLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -98,13 +100,13 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trackRelacionalTrack">
+        app:layout_constraintTop_toBottomOf="@+id/duracionTrackTitulo">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputAlbumRelacionalTrack"
+            android:id="@+id/inputDuracionTrack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hintTrackAsociarAlbum"
+            android:hint="@string/hintTrackAsociarAlbumDuracion"
             android:minHeight="48dip"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>

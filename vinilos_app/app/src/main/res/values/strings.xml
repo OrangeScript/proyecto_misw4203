@@ -29,8 +29,14 @@
     <string name="hintDescripcionCrearAlbum">Escribe una descripción del álbum</string>
     <string name="hintGeneroCrearAlbum">Introduce el género músical del álbum</string>
     <string name="hintDisqueraCrearAlbum">Escribe la disquera que publicó el álbum</string>
-    <string name="tituloAsociarTrack">Asociar Track con album</string>
-    <string name="albumAsociarTrack">Álbum</string>
-    <string name="trackAsociarAlbum">Track</string>
-    <string name="hintTrackAsociarAlbum">Escribe el título de la canción</string>
+    <string name="tituloAsociarTrack">Asociar Track con álbum</string>
+    <string name="nombreAsociarTrackAlbum">Nombre</string>
+    <string name="hintTrackAsociarAlbum">Escribe el nombre de la canción</string>
+    <string name="duracionTrackAsociarAlbum">Duración</string>
+    <string name="hintTrackAsociarAlbumDuracion">Escribe la duración de la canción</string>
+    <string name="DetalleAlbumTituloLabel">Título:</string>
+    <string name="DetalleAlbumDisqueraLabel">Disquera:</string>
+    <string name="DetalleAlbumGeneroLabel">Género:</string>
+    <string name="DetalleAlbumLanzamientoLabel">Lanzamiento:</string>
+    <string name="DetalleAlbumAsociarTrack">Asociar Track</string>
 </resources>
