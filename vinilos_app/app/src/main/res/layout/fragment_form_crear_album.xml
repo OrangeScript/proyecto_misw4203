@@ -46,6 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/TituloCrearAlbum" />
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -176,25 +177,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layoutCrearAlbumFecha" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutCrearAlbumGenero"
+            <Spinner
+                android:id="@+id/dropdownCrearAlbumGenero"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginEnd="8dp"
+                android:minHeight="48dip"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/generoCrearAlbum">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputCrearAlbumGenero"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hintGeneroCrearAlbum"
-                    android:minHeight="48dip"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintTop_toBottomOf="@+id/generoCrearAlbum" />
 
             <TextView
                 android:id="@+id/DisqueraCrearAlbum"
@@ -207,27 +200,18 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layoutCrearAlbumGenero" />
+                app:layout_constraintTop_toBottomOf="@+id/dropdownCrearAlbumGenero" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutCrearAlbumDisquera"
-                android:layout_width="0dp"
+            <Spinner
+                android:id="@+id/dropdownCrearAlbumDisquera"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginEnd="8dp"
+                android:minHeight="48dip"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/DisqueraCrearAlbum">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputCrearAlbumDisquera"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hintDisqueraCrearAlbum"
-                    android:minHeight="48dip"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintTop_toBottomOf="@+id/DisqueraCrearAlbum" />
 
             <TextView
                 android:id="@+id/descripcionCrearAlbum"
@@ -240,7 +224,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layoutCrearAlbumDisquera" />
+                app:layout_constraintTop_toBottomOf="@+id/dropdownCrearAlbumDisquera" />
 
             <EditText
                 android:id="@+id/inputCrearAlbumDescripcion"
@@ -256,7 +240,6 @@
                 android:inputType="textMultiLine"
                 android:minHeight="120dip"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight="match_parent"
                 app:layout_constraintStart_toStartOf="parent"

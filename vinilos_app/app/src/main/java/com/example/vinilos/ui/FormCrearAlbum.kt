@@ -7,12 +7,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentFormCrearAlbumBinding
 import com.example.vinilos.viewmodels.FormCrearAlbumViewModel
 
@@ -58,6 +61,13 @@ class FormCrearAlbum : Fragment() {
         _binding = null
     }
 
+    private fun onNetworkError() {
+        if (!viewModel.isNetworkErrorShown.value!!) {
+            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            viewModel.onNetworkErrorShown()
+        }
+    }
+
     private fun onSavedAlbum() {
         Toast.makeText(activity, "Álbum creado correctamente", Toast.LENGTH_LONG).show()
         viewModel.onSavedAlbumHandled()
@@ -83,6 +93,14 @@ class FormCrearAlbum : Fragment() {
 
         val goBackButton: Button = view.findViewById(R.id.atrasCrearAlbum)
         val saveButton: Button = view.findViewById(R.id.guardarCrearAlbum)
+        val genreDropdown: Spinner = view.findViewById(R.id.dropdownCrearAlbumGenero)
+        val recordLabelDropdown: Spinner = view.findViewById(R.id.dropdownCrearAlbumDisquera)
+
+        val availableGenres : Array<String> = arrayOf("Classical", "Salsa", "Rock", "Folk")
+        val availableRecordLabels : Array<String> = arrayOf("Sony Music", "EMI", "Discos Fuentes", "Elektra", "Fania Records")
+
+        genreDropdown.adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_dropdown_item, availableGenres)
+        recordLabelDropdown.adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_dropdown_item, availableRecordLabels)
 
         goBackButton.setOnClickListener {
             goFromCrearAlbumToOpciones(view)
@@ -106,15 +124,9 @@ class FormCrearAlbum : Fragment() {
         val albumCover = binding.inputCrearAlbumImagen.text.toString()
         val albumReleaseDate = binding.inputCrearAlbumFecha.text.toString()
         val albumDescription = binding.inputCrearAlbumDescripcion.text.toString()
-        val albumGenre = binding.inputCrearAlbumGenero.text.toString()
-        val albumRecordLabel = binding.inputCrearAlbumDisquera.text.toString()
+        val albumGenre = binding.dropdownCrearAlbumGenero.selectedItem.toString()
+        val albumRecordLabel = binding.dropdownCrearAlbumDisquera.selectedItem.toString()
         viewModel.getAlbumData(albumName, albumCover, albumReleaseDate, albumGenre, albumRecordLabel, albumDescription)
-
-        val isNameValid = albumName.isNotEmpty()
-        val isCoverValid = albumCover.isNotEmpty()
-        val isDescriptionValid = albumDescription.isNotEmpty()
-        val isGenreValid = albumGenre.isNotEmpty()
-        val isRecordLabelValid = albumRecordLabel.isNotEmpty()
     }
 
     fun isValidDate(releaseDate: String): Boolean {
@@ -128,16 +140,21 @@ class FormCrearAlbum : Fragment() {
         val albumCover = binding.inputCrearAlbumImagen.text.toString()
         val albumReleaseDate = binding.inputCrearAlbumFecha.text.toString()
         val albumDescription = binding.inputCrearAlbumDescripcion.text.toString()
-        val albumGenre = binding.inputCrearAlbumGenero.text.toString()
-        val albumRecordLabel = binding.inputCrearAlbumDisquera.text.toString()
 
         val isNameValid = albumName.isNotEmpty()
         val isCoverValid = albumCover.isNotEmpty()
         val isDescriptionValid = albumDescription.isNotEmpty()
-        val isGenreValid = albumGenre.isNotEmpty()
-        val isRecordLabelValid = albumRecordLabel.isNotEmpty()
         val isReleaseDateValid = isValidDate(albumReleaseDate)
 
-        binding.
+        binding.layoutCrearAlbumNombre.error = if (isNameValid) null else "Campo requerido"
+        binding.layoutCrearAlbumImagen.error = if (isCoverValid) null else "Campo requerido"
+        binding.inputCrearAlbumDescripcion.error = if (isDescriptionValid) null else "Campo requerido"
+        binding.layoutCrearAlbumFecha.error = when {
+            albumReleaseDate.isEmpty() -> "Campo requerido"
+            !isValidDate(albumReleaseDate) -> "Formato incorrecto. Debe ser YYYY-mm-dd"
+            else -> null
+        }
+
+        return isNameValid && isCoverValid && isDescriptionValid && isReleaseDateValid
     }
 }

@@ -61,7 +61,7 @@ class FormCrearAlbumViewModel(application: Application): AndroidViewModel(applic
         _isNetworkErrorShown.value = true
     }
 
-    fun onSavedAlbumcHandled() {
+    fun onSavedAlbumHandled() {
         _saveSuccess.value = false
     }
 
