@@ -52,6 +52,23 @@ class ListaAlbumViewModel(application: Application) : AndroidViewModel(applicati
             }
     }
 
+    fun refreshAlbumsData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val data = albumRepository.updateDataAlbumsFromNetwork()
+                _albums.postValue(data!!)
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            } catch (e: TimeoutError) {
+                _eventNetworkError.postValue(true)
+                refreshDataFromNetwork()
+            } catch (e: Exception) {
+                _eventNetworkError.postValue(true)
+                refreshDataFromNetwork()
+            }
+        }
+    }
+
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }

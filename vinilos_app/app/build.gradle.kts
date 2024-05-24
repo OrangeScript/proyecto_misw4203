@@ -118,7 +118,7 @@ dependencies {
     // Add Glide for image loading support
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:glide:4.16.0")
-    
+
     // Add Swipe up layout to refresh
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
 }

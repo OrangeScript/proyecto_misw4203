@@ -3,6 +3,7 @@ package com.example.vinilos.ui
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -10,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentListaAlbumBinding
 import com.example.vinilos.modelos.Album
@@ -48,6 +50,13 @@ class ListaAlbum : Fragment() {
         recyclerView = binding.recyclerViewAlbums
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+
+        val refresher: SwipeRefreshLayout = view.findViewById(R.id.actualizarListaAlbumLayout)
+
+        refresher.setOnRefreshListener {
+            updateView()
+            refresher.isRefreshing = false
+        }
     }
 
     override fun onDestroyView() {
@@ -77,5 +86,9 @@ class ListaAlbum : Fragment() {
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
+    }
+
+    private fun updateView() {
+        viewModel.refreshAlbumsData()
     }
 }
