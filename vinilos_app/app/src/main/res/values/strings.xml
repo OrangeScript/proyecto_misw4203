@@ -27,7 +27,7 @@
     <string name="disqueraCrearAlbum">Disquera</string>
     <string name="hintNombreCrearAlbum">Introduce el nombre del álbum</string>
     <string name="hintImagenCrearAlbum">Escribe un enlace. ej: https://www.google.com/search?q=imagen</string>
-    <string name="hintFechaCrearAlbum">Fecha de lanzamiento del álbum</string>
+    <string name="hintFechaCrearAlbum">Fecha de lanzamiento (YYYY-mm-dd)</string>
     <string name="hintDescripcionCrearAlbum">Escribe una descripción del álbum</string>
     <string name="hintGeneroCrearAlbum">Introduce el género músical del álbum</string>
     <string name="hintDisqueraCrearAlbum">Escribe la disquera que publicó el álbum</string>
