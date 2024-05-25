@@ -4,6 +4,7 @@ import android.content.Context
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
+import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -38,9 +39,7 @@ class NetworkServiceAdapter constructor(context: Context) {
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL +path, responseListener,errorListener)
     }
-    private fun postRequest(path: String, body: JSONObject, responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
-        return  JsonObjectRequest(Request.Method.POST, BASE_URL +path, body, responseListener, errorListener)
-    }
+
     private fun putRequest(path: String, body: JSONObject, responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
         return  JsonObjectRequest(Request.Method.PUT, BASE_URL +path, body, responseListener, errorListener)
     }
@@ -192,6 +191,40 @@ class NetworkServiceAdapter constructor(context: Context) {
             Response.ErrorListener {
                 cont.resumeWithException(it)
             }))
+    }
+
+    private fun postRequest(path: String, body: JSONObject, responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
+        return  JsonObjectRequest(Request.Method.POST, BASE_URL +path, body, responseListener, errorListener)
+    }
+
+    suspend fun postAsociarTrack(
+        albumId: Int,
+        body: JSONObject) = suspendCoroutine { cont ->
+        requestQueue.add(postRequest(
+            "albums/$albumId/tracks",
+            body,
+            Response.Listener { response ->
+                cont.resume(response)
+            },
+            Response.ErrorListener {
+                cont.resumeWithException(it)
+            }
+            ))
+
+    }
+
+    suspend fun postCrearAlbum(
+        body: JSONObject) = suspendCoroutine { cont ->
+            requestQueue.add(postRequest(
+                "albums",
+                body,
+                Response.Listener { response ->
+                    cont.resume(response)
+                },
+                Response.ErrorListener {
+                    cont.resumeWithException(it)
+                }
+            ))
     }
 
 }

@@ -7,22 +7,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.vinilos.modelos.Musico
-import com.example.vinilos.repositories.ArtistaRepository
+import com.example.vinilos.repositories.AlbumRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import org.json.JSONObject
 
-class DetalleMusicoViewModel(application: Application, musicoId: Int) : AndroidViewModel(application) {
+class FormAsociarTrackViewModel(application: Application, private val albumId: Int) : AndroidViewModel(application) {
 
-    private val artistaRepository = ArtistaRepository(application)
+    private val albumRepository = AlbumRepository(application)
 
-    private val _musico = MutableLiveData<Musico>()
-
-    val musicoId : Int = musicoId
-
-    val musico: LiveData<Musico>
-        get() = _musico
+    private val _saveSuccess = MutableLiveData<Boolean>()
+    val saveSuccess: LiveData<Boolean>
+        get() = _saveSuccess
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -34,17 +30,18 @@ class DetalleMusicoViewModel(application: Application, musicoId: Int) : AndroidV
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    init {
-        refreshdataFromNetwork()
-    }
+    private fun postTrackToAlbum(albumId: Int, trackName: String, trackDuration: String) {
+        val trackData = JSONObject().apply {
+            put("name", trackName)
+            put("duration", trackDuration)
+        }
 
-    private fun refreshdataFromNetwork() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val data = artistaRepository.refreshDataMusico(musicoId)
-                _musico.postValue(data as Musico?)
+                val response = albumRepository.refreshDataTracksAsociados(albumId, trackData)
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
+                _saveSuccess.postValue(true)
             } catch (e: Exception) {
                 _eventNetworkError.postValue(true)
             }
@@ -55,11 +52,19 @@ class DetalleMusicoViewModel(application: Application, musicoId: Int) : AndroidV
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application, val musicoId: Int) : ViewModelProvider.Factory {
+    fun onSavedTrackHandled() {
+        _saveSuccess.value = false
+    }
+
+    fun getTrackData(trackName: String, trackDuration: String) {
+        postTrackToAlbum(albumId, trackName, trackDuration)
+    }
+
+    class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(DetalleMusicoViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(FormAsociarTrackViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return DetalleMusicoViewModel(app, musicoId) as T
+                return FormAsociarTrackViewModel(app, albumId) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

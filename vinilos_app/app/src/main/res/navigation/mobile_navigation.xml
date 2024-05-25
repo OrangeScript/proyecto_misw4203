@@ -38,7 +38,11 @@
         android:id="@+id/opciones"
         android:name="com.example.vinilos.ui.Opciones.Opciones"
         android:label="fragment_opciones"
-        tools:layout="@layout/fragment_opciones" />
+        tools:layout="@layout/fragment_opciones" >
+        <action
+            android:id="@+id/action_opciones_to_formCrearAlbum"
+            app:destination="@id/formCrearAlbum" />
+    </fragment>
 
     <fragment
         android:id="@+id/detalleAlbum"
@@ -48,6 +52,9 @@
         <argument
             android:name="albumId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_detalleAlbum_to_formAsociarTrack"
+            app:destination="@id/formAsociarTrack" />
     </fragment>
 
     <fragment
@@ -68,6 +75,22 @@
         <argument
             android:name="musicoId"
             app:argType="integer"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/formCrearAlbum"
+        android:name="com.example.vinilos.ui.FormCrearAlbum"
+        android:label="FormCrearAlbum"
+        tools:layout="@layout/fragment_form_crear_album"/>
+
+    <fragment
+        android:id="@+id/formAsociarTrack"
+        android:name="com.example.vinilos.ui.FormAsociarTrack"
+        android:label="FormAsociarTrack"
+        tools:layout="@layout/fragment_form_asociar_track" >
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

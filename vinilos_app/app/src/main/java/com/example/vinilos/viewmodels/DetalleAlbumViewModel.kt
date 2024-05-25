@@ -37,12 +37,10 @@ class DetalleAlbumViewModel(application: Application, albumId: Int) : AndroidVie
     }
 
     private fun refreshDataFromNetwork() {
-            viewModelScope.launch(Dispatchers.Default) {
+            viewModelScope.launch(Dispatchers.IO) {
                 try {
-                    withContext(Dispatchers.IO) {
-                        val data = albumRepository.refreshDataAlbum(albumId)
-                        _album.postValue(data)
-                    }
+                    val data = albumRepository.refreshDataAlbum(albumId)
+                    _album.postValue(data)
                     _eventNetworkError.postValue(false)
                     _isNetworkErrorShown.postValue(false)
                 } catch (e: Exception) {

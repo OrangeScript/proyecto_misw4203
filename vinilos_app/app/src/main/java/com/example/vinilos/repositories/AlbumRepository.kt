@@ -1,10 +1,12 @@
 package com.example.vinilos.repositories
 
+import android.adservices.adid.AdId
 import android.app.Application
 import android.util.Log
 import com.example.vinilos.modelos.Album
 import com.example.vinilos.network.CacheManager
 import com.example.vinilos.network.NetworkServiceAdapter
+import org.json.JSONObject
 
 class AlbumRepository (val application: Application){
     private val networkServiceAdapter = NetworkServiceAdapter.getInstance(application)
@@ -24,6 +26,12 @@ class AlbumRepository (val application: Application){
         }
     }
 
+    suspend fun updateDataAlbumsFromNetwork(): List<Album>? {
+        val albums = networkServiceAdapter.getAlbums()
+        CacheManager.getInstance(application.applicationContext).addAlbums(albums)
+        return albums
+    }
+
     suspend fun refreshDataAlbum(id: Int): Album {
         val potentialResp = cacheManager.getAlbumDetails(id)
         if (potentialResp == null) {
@@ -36,6 +44,14 @@ class AlbumRepository (val application: Application){
             Log.d("Cache decision", "return album from cache")
             return potentialResp
         }
+    }
+
+    suspend fun refreshDataTracksAsociados(albumId: Int, body: JSONObject) {
+        networkServiceAdapter.postAsociarTrack(albumId, body)
+    }
+
+    suspend fun createAlbum(body: JSONObject) {
+        networkServiceAdapter.postCrearAlbum(body)
     }
 
 }
